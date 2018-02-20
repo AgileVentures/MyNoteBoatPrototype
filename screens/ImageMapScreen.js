@@ -20,12 +20,12 @@ export default class ImageMapScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          hover: false
+          showTheThing: false
       };
   }
 
   toggle = () => {
-      this.setState({hover: !this.state.hover});
+      this.setState({showTheThing: !this.state.showTheThing});
   };
 
 
@@ -37,39 +37,17 @@ export default class ImageMapScreen extends React.Component {
             width="100"
         >
           <Circle
+            style="display: none;"
+            visibility="hidden"
             cx="50%"
             cy="50%"
             r="38%"
             fill="red"
-            onPress={() => alert('Press on Circle')}
+            onPress={this.toggle}
           />
         </Svg>
 
-        <Svg height="120" width="120">
-            <Defs>
-                <ClipPath id="clip">
-                    <Circle r="80" cx="50%" cy="50%"/>
-                </ClipPath>
-            </Defs>
-            <G>
-                <G>
-                    <Path
-                        d="M50,5L20,99L95,39L5,39L80,99z"
-                        clipPath="url(#clip)"
-                        stroke={this.state.hover ? 'rgba(10, 10, 10, 0.5)' : 'black'}
-                        fill={this.state.hover ? 'pink' : 'red'}
-                        strokeWidth="6"
-                        delayPressIn={0}
-                        onPressIn={this.toggle}
-                        onPressOut={this.toggle}
-                        x="0"
-                        y="0"
-                        scale="1.2"
-                    />
-                </G>
-            </G>
-        </Svg>
-
+        { this.state.showTheThing &&
         <Svg width={Dimensions.get('window').width} height={50}>
           <Text
             fill="#fff"
@@ -78,10 +56,12 @@ export default class ImageMapScreen extends React.Component {
             fontFamily={Font.processFontFamily('space-mono')}
             x={25}
             y={15}
-            style="display:hidden;">
+            style="width:0, height:0"
+            visibility="hidden">
             drawn with react-native-svg
           </Text>
         </Svg>
+        }
       </View>
     );
   }
