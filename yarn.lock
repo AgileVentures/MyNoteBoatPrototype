@@ -3118,7 +3118,7 @@ lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -3917,14 +3917,6 @@ react-native-safe-module@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-native-safe-module/-/react-native-safe-module-1.2.0.tgz#a23824ca24edc2901913694a76646475113d570d"
   dependencies:
     dedent "^0.6.0"
-
-react-native-svg@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-6.2.1.tgz#4cdd71577814fb4d60496afc75e660c482f41c84"
-  dependencies:
-    color "^2.0.1"
-    lodash "^4.16.6"
-    pegjs "^0.10.0"
 
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
@@ -4885,17 +4877,17 @@ vhost@~3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/vhost/-/vhost-3.0.2.tgz#2fb1decd4c466aa88b0f9341af33dc1aff2478d5"
 
-victory-chart@^25.1.0:
-  version "25.1.1"
-  resolved "https://registry.yarnpkg.com/victory-chart/-/victory-chart-25.1.1.tgz#5b5d9bde802eea774f1105af6fb723d478717532"
+victory-chart@^22.0.0:
+  version "22.0.0"
+  resolved "https://registry.yarnpkg.com/victory-chart/-/victory-chart-22.0.0.tgz#55f0a85c7d14d4f87ab50b761af0ec1731773e6b"
   dependencies:
     d3-voronoi "^1.1.2"
     lodash "^4.17.4"
-    victory-core "^21.0.4"
+    victory-core "^18.0.0"
 
-victory-core@^21.0.2, victory-core@^21.0.4:
-  version "21.0.4"
-  resolved "https://registry.yarnpkg.com/victory-core/-/victory-core-21.0.4.tgz#5ac6d495a43e5d95249c56973290b182ec607b4a"
+victory-core@^18.0.0, victory-core@^18.0.1:
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/victory-core/-/victory-core-18.0.2.tgz#5a962865d1ce47b1cec740a34a39f8274b6d4e68"
   dependencies:
     d3-ease "^1.0.0"
     d3-interpolate "^1.1.1"
@@ -4904,23 +4896,23 @@ victory-core@^21.0.2, victory-core@^21.0.4:
     d3-timer "^1.0.0"
     lodash "^4.17.4"
 
-victory-native@^0.17.1:
-  version "0.17.1"
-  resolved "https://registry.yarnpkg.com/victory-native/-/victory-native-0.17.1.tgz#094a4f6ed1f4de8588b8b91711d6dc247cda3fee"
+victory-native@~0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/victory-native/-/victory-native-0.15.0.tgz#047b63c802268f72e1727bf595039646eecdda6e"
   dependencies:
-    lodash "^4.17.5"
+    lodash "^4.17.4"
     prop-types "^15.5.10"
-    victory-chart "^25.1.0"
-    victory-core "^21.0.4"
-    victory-pie "^14.0.0"
+    victory-chart "^22.0.0"
+    victory-core "^18.0.1"
+    victory-pie "^12.0.0"
 
-victory-pie@^14.0.0:
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/victory-pie/-/victory-pie-14.0.1.tgz#53dff9e81696253c3da00f347d908d3ac1241c66"
+victory-pie@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/victory-pie/-/victory-pie-12.0.0.tgz#60c734d2976be2d011446fdfa9024e0a5922a605"
   dependencies:
     d3-shape "^1.0.0"
     lodash "^4.17.4"
-    victory-core "^21.0.2"
+    victory-core "^18.0.0"
 
 vinyl@^0.5.0:
   version "0.5.3"
