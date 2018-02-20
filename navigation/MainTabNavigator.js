@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import ImageMapScreen from '../screens/ImageMapScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 export default TabNavigator(
@@ -16,6 +17,9 @@ export default TabNavigator(
     },
     Links: {
       screen: LinksScreen,
+    },
+    ImageMap: {
+      screen: ImageMapScreen,
     },
     Settings: {
       screen: SettingsScreen,
@@ -34,6 +38,9 @@ export default TabNavigator(
                 : 'md-information-circle';
             break;
           case 'Links':
+            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+            break;
+          case 'ImageMap':
             iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Settings':
