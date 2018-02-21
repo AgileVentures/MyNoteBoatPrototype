@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { VictoryChart, VictoryStack, VictoryArea } from 'victory-native';
 import Svg, {
     Circle,
     Path,
@@ -8,7 +7,8 @@ import Svg, {
     G,
     Text,
     ClipPath,
-    Defs
+    Defs,
+    Image
 } from 'react-native-svg';
 import { Font } from 'expo';
 
@@ -32,36 +32,39 @@ export default class ImageMapScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <Svg
-            height="100"
-            width="100"
+            height="972"
+            width="578"
         >
+          <Image 
+            x="50" 
+            y="5"
+            height="400"
+            width="244"
+            preserveAspectRatio="xMidYMid slice"
+            href={require('../assets/images/mynoteboat-sailboat.png')}
+          />
           <Circle
-            style="display: none;"
-            visibility="hidden"
-            cx="50%"
-            cy="50%"
-            r="38%"
+            cx="190"
+            cy="290"
+            r="5"
             fill="red"
             onPress={this.toggle}
           />
-        </Svg>
+          { this.state.showTheThing &&
+            <Text
+                x="200"
+                y="300"
+                textAnchor="middle"
+                fontWeight="bold"
+                fontSize="16"
+                fill="blue"
+            >Test VHF</Text>
+          }
 
-        { this.state.showTheThing &&
-        <Svg width={Dimensions.get('window').width} height={50}>
-          <Text
-            fill="#fff"
-            stroke="#000"
-            fontSize={15}
-            fontFamily={Font.processFontFamily('space-mono')}
-            x={25}
-            y={15}
-            style="width:0, height:0"
-            visibility="hidden">
-            drawn with react-native-svg
-          </Text>
         </Svg>
-        }
+        
       </View>
     );
   }
