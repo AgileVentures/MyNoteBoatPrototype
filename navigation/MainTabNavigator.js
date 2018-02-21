@@ -6,8 +6,8 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
+import MechanicalScreen from '../screens/MechanicalScreen';
 import LinksScreen from '../screens/LinksScreen';
-import ImageMapScreen from '../screens/ImageMapScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 export default TabNavigator(
@@ -15,11 +15,11 @@ export default TabNavigator(
     Home: {
       screen: HomeScreen,
     },
+    Mechanical: {
+      screen: MechanicalScreen,
+    },
     Links: {
       screen: LinksScreen,
-    },
-    ImageMap: {
-      screen: ImageMapScreen,
     },
     Settings: {
       screen: SettingsScreen,
@@ -37,10 +37,10 @@ export default TabNavigator(
                 ? `ios-information-circle${focused ? '' : '-outline'}`
                 : 'md-information-circle';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case 'Mechanical':
+            iconName = Platform.OS === 'ios' ? `ios-build${focused ? '' : '-outline'}` : 'md-build';
             break;
-          case 'ImageMap':
+          case 'Links':
             iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Settings':

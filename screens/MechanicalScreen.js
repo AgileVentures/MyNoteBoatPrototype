@@ -12,9 +12,9 @@ import Svg, {
 } from 'react-native-svg';
 import { Font } from 'expo';
 
-export default class ImageMapScreen extends React.Component {
+export default class MechanicalScreen extends React.Component {
   static navigationOptions = {
-    title: '<Svg />',
+    title: 'Mécanique',
   };
 
   constructor () {
@@ -28,8 +28,8 @@ export default class ImageMapScreen extends React.Component {
       this.setState({showTheThing: !this.state.showTheThing});
   };
 
-
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
 
@@ -48,18 +48,19 @@ export default class ImageMapScreen extends React.Component {
           <Circle
             cx="190"
             cy="290"
-            r="5"
+            r="10"
             fill="red"
             onPress={this.toggle}
           />
           { this.state.showTheThing &&
             <Text
-                x="200"
+                x="220"
                 y="300"
                 textAnchor="middle"
                 fontWeight="bold"
                 fontSize="16"
                 fill="blue"
+                onPress={() => navigate('TestVHF', {})}
             >Test VHF</Text>
           }
 
