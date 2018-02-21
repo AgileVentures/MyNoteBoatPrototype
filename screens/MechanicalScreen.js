@@ -54,7 +54,7 @@ export default class MechanicalScreen extends React.Component {
           />
           { this.state.showTheThing &&
             <Text
-                x="220"
+                x="240"
                 y="300"
                 textAnchor="middle"
                 fontWeight="bold"
