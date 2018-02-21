@@ -20,12 +20,15 @@ export default class MechanicalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTheThing: false
+          showTestVHF: false
       };
   }
 
-  toggle = () => {
-      this.setState({showTheThing: !this.state.showTheThing});
+  toggleTestVHF = () => {
+      this.setState({showTestVHF: !this.state.showTestVHF});
+  };
+  toggleLifeJackets = () => {
+      this.setState({showLifeJackets: !this.state.showLifeJackets});
   };
 
   render() {
@@ -47,12 +50,12 @@ export default class MechanicalScreen extends React.Component {
           />
           <Circle
             cx="190"
-            cy="290"
+            cy="330"
             r="10"
             fill="red"
-            onPress={this.toggle}
+            onPress={this.toggleTestVHF}
           />
-          { this.state.showTheThing &&
+          { this.state.showTestVHF &&
             <Text
                 x="240"
                 y="300"
@@ -62,6 +65,25 @@ export default class MechanicalScreen extends React.Component {
                 fill="blue"
                 onPress={() => navigate('TestVHF', {})}
             >Test VHF</Text>
+          }
+
+          <Circle
+            cx="140"
+            cy="280"
+            r="10"
+            fill="green"
+            onPress={this.toggleLifeJackets}
+          />
+          { this.state.showLifeJackets &&
+            <Text
+                x="200"
+                y="240"
+                textAnchor="middle"
+                fontWeight="bold"
+                fontSize="16"
+                fill="blue"
+                onPress={() => navigate('TestVHF', {})}
+            >Inspection de Brassières</Text>
           }
 
         </Svg>

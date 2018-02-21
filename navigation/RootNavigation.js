@@ -3,12 +3,16 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
+import MainScreen from './../screens/MainScreen';
 import TestVHFScreen from './../screens/TestVHFScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
   {
     Main: {
+      screen: MainScreen,
+    },
+    Entretien: {
       screen: MainTabNavigator,
     },
     TestVHF: {
