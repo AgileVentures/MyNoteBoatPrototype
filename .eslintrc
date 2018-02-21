@@ -17,7 +17,7 @@
   "extends" : [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb"
+    "expo/native"
   ],
   "rules" : {
     "arrow-body-style" : "warn"
