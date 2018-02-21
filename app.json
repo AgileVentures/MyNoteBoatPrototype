@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MyNoteBoatPrototype",
-    "description": "A very interesting project.",
+    "description": "Maintain your boat",
     "slug": "MyNoteBoatPrototype",
     "privacy": "public",
     "sdkVersion": "25.0.0",
@@ -16,6 +16,9 @@
     },
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "org.agileventures.mynoteboat"
     }
   }
 }
