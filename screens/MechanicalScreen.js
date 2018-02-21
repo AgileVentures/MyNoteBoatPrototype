@@ -56,15 +56,19 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleTestVHF}
           />
           { this.state.showTestVHF &&
-            <Text
-                x="240"
-                y="300"
-                textAnchor="middle"
-                fontWeight="bold"
-                fontSize="16"
-                fill="blue"
-                onPress={() => navigate('TestVHF', {})}
-            >Test VHF</Text>
+            <G x="200" y="300" onPress={() => navigate('TestVHF', {})}>
+              <Rect
+                width="80"
+                height="20"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+               textAnchor="start"
+               fontWeight="bold"
+               fontSize="16"
+               fill="blue"
+              >Test VHF</Text>
+            </G>
           }
 
           <Circle
@@ -87,7 +91,7 @@ export default class MechanicalScreen extends React.Component {
           }
 
         </Svg>
-        
+
       </View>
     );
   }
