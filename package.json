@@ -16,6 +16,7 @@
     "victory-native": "~0.15.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
