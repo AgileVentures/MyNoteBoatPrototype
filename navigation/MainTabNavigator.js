@@ -5,24 +5,24 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
+import SecurityScreen from '../screens/SecurityScreen';
 import MechanicalScreen from '../screens/MechanicalScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import HullAndRiggingScreen from '../screens/HullAndRiggingScreen';
+import ElectricalScreen from '../screens/ElectricalScreen';
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Security: {
+      screen: SecurityScreen,
     },
     Mechanical: {
       screen: MechanicalScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    Electrical: {
+      screen: ElectricalScreen,
     },
-    Settings: {
-      screen: SettingsScreen,
+    HullAndRigging: {
+      screen: HullAndRiggingScreen,
     },
   },
   {
@@ -31,21 +31,21 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Security':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-information-circle${focused ? '' : '-outline'}`
-                : 'md-information-circle';
+                ? `ios-shirt${focused ? '' : '-outline'}`
+                : 'md-shirt';
             break;
           case 'Mechanical':
             iconName = Platform.OS === 'ios' ? `ios-build${focused ? '' : '-outline'}` : 'md-build';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case 'Electrical':
+            iconName = Platform.OS === 'ios' ? `ios-flash${focused ? '' : '-outline'}` : 'md-flash';
             break;
-          case 'Settings':
+          case 'HullAndRigging':
             iconName =
-              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+              Platform.OS === 'ios' ? `ios-boat${focused ? '' : '-outline'}` : 'md-boat';
         }
         return (
           <Ionicons
