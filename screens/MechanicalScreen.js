@@ -20,7 +20,9 @@ export default class MechanicalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTestVHF: false
+          showTestVHF: false,
+          showLifeJackets: false,
+          showRaft: false
       };
   }
 
@@ -82,7 +84,7 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleLifeJackets}
           />
           { this.state.showLifeJackets &&
-            <G x="140" y="250" onPress={() => navigate('TestVHF', {})}>
+            <G x="140" y="250" onPress={() => navigate('LifeJackets', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -105,7 +107,7 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleRaft}
           />
           { this.state.showRaft &&
-            <G x="100" y="210" onPress={() => navigate('TestVHF', {})}>
+            <G x="100" y="210" onPress={() => navigate('Raft', {})}>
               <Rect
                 width="140"
                 height="20"
