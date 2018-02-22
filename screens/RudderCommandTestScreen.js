@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { AsyncStorage, Image, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 
@@ -81,7 +81,7 @@ export default class RudderCommandTestScreen extends React.Component {
     }
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
+      <View>
         <NavigationBar
           tintColor="#1C87B2"
           title={<Image 

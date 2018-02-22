@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { AsyncStorage, Image, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 

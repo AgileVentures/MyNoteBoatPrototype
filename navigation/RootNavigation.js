@@ -67,10 +67,10 @@ const RootStackNavigator = StackNavigator(
       screen: InspectClutchScreen, navigationOptions: { header: null }
     },
     RudderCommandTest: {
-      screen: RudderCommandTestScreen,
+      screen: RudderCommandTestScreen, navigationOptions: { header: null }
     },
     ClutchTest: {
-      screen: ClutchTestScreen,
+      screen: ClutchTestScreen, navigationOptions: { header: null }
     },
   },
   {

@@ -45,7 +45,7 @@ export default class HullAndRiggingScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
+      <View>
       <NavigationBar
         tintColor="#1C87B2"
         title={<NativeImage 
