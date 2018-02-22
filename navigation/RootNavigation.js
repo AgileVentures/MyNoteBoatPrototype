@@ -5,9 +5,9 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
-import TestVHFScreen from './../screens/WindlassTest';
-// import LifeJacketsScreen from './../screens/LifeJacketsScreen';
-// import RaftScreen from './../screens/RaftScreen';
+import WindlassTestScreen from './../screens/WindlassTestScreen';
+import RudderCommandTestScreen from './../screens/RudderCommandTestScreen';
+import ClutchTestScreen from './../screens/ClutchTestScreen';
 
 import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
 import LifeRingControlScreen from './../screens/LifeRingControlScreen';
@@ -36,8 +36,8 @@ const RootStackNavigator = StackNavigator(
     Navigation: {
       screen: NavigationTabNav, navigationOptions: { header: null }
     },
-    TestVHF: {
-      screen: TestVHFScreen, navigationOptions: { header: null }
+    WindlassTest: {
+      screen: WindlassTestScreen, navigationOptions: { header: null }
     },
     LifeRaftControl: {
       screen: LifeRaftControlScreen, navigationOptions: { header: null }
@@ -65,6 +65,12 @@ const RootStackNavigator = StackNavigator(
     },
     InspectClutch: {
       screen: InspectClutchScreen, navigationOptions: { header: null }
+    },
+    RudderCommandTest: {
+      screen: RudderCommandTestScreen,
+    },
+    ClutchTest: {
+      screen: ClutchTestScreen,
     },
   },
   {

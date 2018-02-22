@@ -33,11 +33,32 @@ export default class MechanicalScreen extends React.Component {
   componentDidMount() {
     AsyncStorage.getItem('@MyNoteBoatStore:ClutchTest:editable').then((value) => {
       if (value === null){ value = '{ "Condition": "red" }' }
-      this.setState({
-        isLoading: false,
-        ClutchTestColour: JSON.parse(value).Condition
+        this.setState({
+          isLoading: false,
+          ClutchTestColour: JSON.parse(value).Condition
+        });
+      AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest:editable').then((value) => {
+        if (value === null){ value = '{ "Condition": "red" }' }
+          this.setState({
+            isLoading: false,
+            WindlassTestColour: JSON.parse(value).Condition
+          });
+        AsyncStorage.getItem('@MyNoteBoatStore:RudderCommandTest:editable').then((value) => {
+          if (value === null){ value = '{ "Condition": "red" }' }
+            this.setState({
+              isLoading: false,
+              RudderCommandTestColour: JSON.parse(value).Condition
+            });
+          AsyncStorage.getItem('@MyNoteBoatStore:EngineTest:editable').then((value) => {
+            if (value === null){ value = '{ "Condition": "red" }' }
+              this.setState({
+                isLoading: false,
+                EngineTestColour: JSON.parse(value).Condition
+              });
+            });
+          });
+        });
       });
-    });
   }
 
   toggleWindlassTest = () => {
@@ -88,7 +109,7 @@ export default class MechanicalScreen extends React.Component {
             cx="190"
             cy="330"
             r="10"
-            fill="red"
+            fill={this.state.WindlassTestColour}
             onPress={this.toggleWindlassTest}
           />
           { this.state.showWindlassTest &&
@@ -111,7 +132,7 @@ export default class MechanicalScreen extends React.Component {
             cx="140"
             cy="280"
             r="10"
-            fill="green"
+            fill={this.state.RudderCommandTestColour}
             onPress={this.toggleRudderCommandTest}
           />
           { this.state.showRudderCommandTest &&
@@ -157,7 +178,7 @@ export default class MechanicalScreen extends React.Component {
             cx="80"
             cy="320"
             r="10"
-            fill="orange"
+            fill={this.state.EngineTestColour}
             onPress={this.toggleEngineTest}
           />
           { this.state.showEngineTest &&
