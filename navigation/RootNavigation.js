@@ -13,6 +13,7 @@ import RudderInspectScreen from './../screens/RudderInspectScreen';
 import InspectBatteryScreen from './../screens/InspectBatteryScreen';
 import TestNavLightsScreen from './../screens/TestNavLightsScreen';
 import InspectHullScreen from './../screens/InspectHullScreen';
+import InspectEngineScreen from './../screens/InspectEngineScreen';
 import InspectKeelScreen from './../screens/InspectKeelScreen';
 import InspectRudderScreen from './../screens/InspectRudderScreen';
 
@@ -55,6 +56,9 @@ const RootStackNavigator = StackNavigator(
     },
     InspectRudder: {
       screen: InspectRudderScreen,
+    },
+    InspectEngine: {
+      screen: InspectEngineScreen,
     },
   },
   {
