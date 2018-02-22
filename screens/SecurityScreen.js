@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -21,18 +21,38 @@ export default class SecurityScreen extends React.Component {
       super(...arguments);
       this.state = {
           showLifeRaftControl: false,
-          showLiferingControl: false,
+          showLifeRingControl: false,
+          isLoading: true
       };
   }
 
-  toggleLiferingControl = () => {
-      this.setState({showLiferingControl: !this.state.showLiferingControl});
+  componentDidMount() {
+    AsyncStorage.getItem('@MyNoteBoatStore:LifeRingControl:editable').then((value) => {
+      if (value === null){ value = '{ "Condition": "red" }' }
+      this.setState({
+        LifeRingControlColour: JSON.parse(value).Condition
+      });
+      AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl:editable').then((value) => {
+        if (value === null){ value = '{ "Condition": "red" }' }
+        this.setState({
+          isLoading: false,
+          LifeRaftControlColour: JSON.parse(value).Condition
+        });
+      });
+    });
+  }
+
+  toggleLifeRingControl = () => {
+      this.setState({showLifeRingControl: !this.state.showLifeRingControl});
   };
   toggleLifeRaftControl = () => {
       this.setState({showLifeRaftControl: !this.state.showLifeRaftControl});
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <View><NativeText>Loading...</NativeText></View>;
+    }
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
@@ -53,11 +73,11 @@ export default class SecurityScreen extends React.Component {
             cx="80"
             cy="320"
             r="10"
-            fill="orange"
-            onPress={this.toggleLiferingControl}
+            fill={this.state.LifeRingControlColour}
+            onPress={this.toggleLifeRingControl}
           />
-          { this.state.showLiferingControl &&
-            <G x="80" y="290" onPress={() => navigate('LiferingControl', {})}>
+          { this.state.showLifeRingControl &&
+            <G x="80" y="290" onPress={() => navigate('LifeRingControl', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -76,7 +96,7 @@ export default class SecurityScreen extends React.Component {
             cx="100"
             cy="240"
             r="10"
-            fill="green"
+            fill={this.state.LifeRaftControlColour}
             onPress={this.toggleLifeRaftControl}
           />
           { this.state.showLifeRaftControl &&

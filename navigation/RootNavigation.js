@@ -10,6 +10,7 @@ import TestVHFScreen from './../screens/WindlassTest';
 // import RaftScreen from './../screens/RaftScreen';
 
 import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
+import LifeRingControlScreen from './../screens/LifeRingControlScreen';
 // import RudderInspectScreen from './../screens/RudderInspectScreen';
 import InspectBatteryScreen from './../screens/InspectBatteryScreen';
 import TestNavLightsScreen from './../screens/TestNavLightsScreen';
@@ -40,6 +41,9 @@ const RootStackNavigator = StackNavigator(
     },
     LifeRaftControl: {
       screen: LifeRaftControlScreen,
+    },
+    LifeRingControl: {
+      screen: LifeRingControlScreen,
     },
     InspectBattery: {
       screen: InspectBatteryScreen,

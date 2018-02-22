@@ -28,7 +28,7 @@ const options = {
 
 export default class LifeRaftControlScreen extends React.Component {
   static navigationOptions = {
-    title: 'Contrôle de la bouée couronne',
+    title: 'Contrôl du radeau',
   };
 
   constructor (props) {
@@ -42,7 +42,7 @@ export default class LifeRaftControlScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -51,40 +51,22 @@ export default class LifeRaftControlScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRaftControl', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRaftControl:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRaftControl:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Security', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
@@ -92,10 +74,9 @@ export default class LifeRaftControlScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-         <Text>Inspection visuelle de la bouée couronne.</Text>
-         <Text>Essai du feu à retournement.</Text>
-         <Text>Contrôle du marquage (Nom et port du bateau)</Text>
-         <Text>Contrôle des bandes réfléchissantes.</Text>
+         <Text>Inspection du visuel de la coquille du radeau et du bout de déclenchement de la bouteille.</Text>
+         <Text>Vérification de la fin de validité de l’inspection. </Text>
+         <Text>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
          <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>

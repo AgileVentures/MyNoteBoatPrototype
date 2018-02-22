@@ -158,8 +158,8 @@ export default class MainScreen extends React.Component {
           <Image
             x="50"
             y="150"
-            height="128"
-            width="128"
+            height="100%"
+            width="100%"
             preserveAspectRatio="xMidYMid slice"
             href={require("../assets/images/boating_transparent.png")}
           />

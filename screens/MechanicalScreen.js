@@ -1,5 +1,5 @@
 import React from 'react';
-import {  AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,

@@ -11,7 +11,7 @@ var Conditions = t.enums({
   red: 'Defecteux'
 });
 
-var RudderInspect = t.struct({
+var LifeRingControl = t.struct({
   Condition: Conditions,              // a required enum
   Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
@@ -26,9 +26,9 @@ const options = {
   auto: 'placeholders'
 };
 
-export default class RudderInspectScreen extends React.Component {
+export default class LifeRingControlScreen extends React.Component {
   static navigationOptions = {
-    title: 'Inspection du gouvernail',
+    title: 'Contrôl de la Bouée Couronne',
   };
 
   constructor (props) {
@@ -42,7 +42,7 @@ export default class RudderInspectScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:RudderInspect').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:LifeRingControl:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -51,40 +51,22 @@ export default class RudderInspectScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:RudderInspect');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:RudderInspect', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRingControl:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRingControl:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Security', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
@@ -92,14 +74,16 @@ export default class RudderInspectScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-         <Text>Inspection visuelle du gouvernail. Rechercher une déformation ou des Contrôle le jeu de la mèche dans l’axe.</Text>
-         <Text>Inspection visuelle des paliers.</Text>
+         <Text>Inspection visuelle de la bouée couronne.</Text>
+         <Text>Essai du feu à retournement.</Text>
+         <Text>Contrôle du marquage (Nom et port du bateau)</Text>
+         <Text>Contrôle des bandes réfléchissantes</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
          <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={RudderInspect}
+          type={LifeRingControl}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
