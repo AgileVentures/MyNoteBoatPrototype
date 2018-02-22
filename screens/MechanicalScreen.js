@@ -20,7 +20,9 @@ export default class MechanicalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTestVHF: false
+          showTestVHF: false,
+          showLifeJackets: false,
+          showRaft: false
       };
   }
 
@@ -29,6 +31,9 @@ export default class MechanicalScreen extends React.Component {
   };
   toggleLifeJackets = () => {
       this.setState({showLifeJackets: !this.state.showLifeJackets});
+  };
+  toggleRaft = () => {
+    this.setState({showRaft: !this.state.showRaft});
   };
 
   render() {
@@ -40,8 +45,8 @@ export default class MechanicalScreen extends React.Component {
             height="972"
             width="578"
         >
-          <Image 
-            x="50" 
+          <Image
+            x="50"
             y="5"
             height="400"
             width="244"
@@ -56,7 +61,7 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleTestVHF}
           />
           { this.state.showTestVHF &&
-            <G x="200" y="300" onPress={() => navigate('TestVHF', {})}>
+            <G x="190" y="300" onPress={() => navigate('TestVHF', {})}>
               <Rect
                 width="80"
                 height="20"
@@ -79,15 +84,42 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleLifeJackets}
           />
           { this.state.showLifeJackets &&
-            <Text
-                x="200"
-                y="240"
-                textAnchor="middle"
-                fontWeight="bold"
-                fontSize="16"
-                fill="blue"
-                onPress={() => navigate('TestVHF', {})}
-            >Inspection de Brassières</Text>
+            <G x="140" y="250" onPress={() => navigate('LifeJackets', {})}>
+              <Rect
+                width="185"
+                height="20"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >Inspection de Brassières</Text>
+            </G>
+          }
+
+          <Circle
+            cx="100"
+            cy="240"
+            r="10"
+            fill="red"
+            onPress={this.toggleRaft}
+          />
+          { this.state.showRaft &&
+            <G x="100" y="210" onPress={() => navigate('Raft', {})}>
+              <Rect
+                width="140"
+                height="20"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+               textAnchor="start"
+               fontWeight="bold"
+               fontSize="16"
+               fill="blue"
+              >Contrôle du radeau</Text>
+            </G>
           }
 
         </Svg>

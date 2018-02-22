@@ -5,6 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import MainScreen from './../screens/MainScreen';
 import TestVHFScreen from './../screens/TestVHFScreen';
+import LifeJacketsScreen from './../screens/LifeJacketsScreen';
+import RaftScreen from './../screens/RaftScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -17,6 +19,12 @@ const RootStackNavigator = StackNavigator(
     },
     TestVHF: {
       screen: TestVHFScreen,
+    },
+    LifeJackets: {
+      screen: LifeJacketsScreen,
+    },
+    Raft: {
+      screen: RaftScreen,
     },
   },
   {
