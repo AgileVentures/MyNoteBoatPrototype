@@ -25,46 +25,46 @@ import registerForPushNotificationsAsync from '../api/registerForPushNotificatio
 const RootStackNavigator = StackNavigator(
   {
     Main: {
-      screen: MainScreen,
+      screen: MainScreen, navigationOptions: { header: null }
     },
     Checklists: {
-      screen: NavigationTabNav,
+      screen: NavigationTabNav, navigationOptions: { header: null }
     },
     Entretien: {
-      screen: MainTabNavigator,
+      screen: MainTabNavigator, navigationOptions: { header: null }
     },
     Navigation: {
-      screen: NavigationTabNav,
+      screen: NavigationTabNav, navigationOptions: { header: null }
     },
     TestVHF: {
-      screen: TestVHFScreen,
+      screen: TestVHFScreen, navigationOptions: { header: null }
     },
     LifeRaftControl: {
-      screen: LifeRaftControlScreen,
+      screen: LifeRaftControlScreen, navigationOptions: { header: null }
     },
     LifeRingControl: {
-      screen: LifeRingControlScreen,
+      screen: LifeRingControlScreen, navigationOptions: { header: null }
     },
     InspectBattery: {
-      screen: InspectBatteryScreen,
+      screen: InspectBatteryScreen, navigationOptions: { header: null }
     },
     TestNavLights: {
-      screen: TestNavLightsScreen,
+      screen: TestNavLightsScreen, navigationOptions: { header: null }
     },
     InspectHull: {
-      screen: InspectHullScreen,
+      screen: InspectHullScreen, navigationOptions: { header: null }
     },
     InspectKeel: {
-      screen: InspectKeelScreen,
+      screen: InspectKeelScreen, navigationOptions: { header: null }
     },
     InspectRudder: {
-      screen: InspectRudderScreen,
+      screen: InspectRudderScreen, navigationOptions: { header: null }
     },
     EngineTest: {
-      screen: EngineTestScreen,
+      screen: EngineTestScreen, navigationOptions: { header: null }
     },
     InspectClutch: {
-      screen: InspectClutchScreen,
+      screen: InspectClutchScreen, navigationOptions: { header: null }
     },
   },
   {

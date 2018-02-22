@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, Image as NativeImage, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -13,6 +13,8 @@ import Svg, {
 } from 'react-native-svg';
 import { Font } from 'expo';
 
+import NavigationBar from 'react-native-navbar';
+
 export default class MainScreen extends React.Component {
 
   render() {
@@ -25,8 +27,25 @@ export default class MainScreen extends React.Component {
     const arc6 = describeArc(150, 150, 50, 0, 180);
 
     const { navigate } = this.props.navigation;
+
+    const leftButtonConfig = {
+      title: 'Home',
+      handler: () => navigate('Main', {}),
+    };
+
+    const titleConfig = {
+      title: 'myNoteBoat',
+    };
     return (
       <View style={styles.container}>
+      <NavigationBar
+        tintColor="#1C87B2"
+        title={<NativeImage 
+                 source={require('../assets/images/mynoteboat.png')}
+                />
+              }
+        leftButton={leftButtonConfig}
+      />
       <Svg width="500" height="900">
         <G x="10" y="50">
         <G x="0" y="0" onPress={() => navigate('Navigation', {})}>
