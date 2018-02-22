@@ -6,9 +6,9 @@ var t = require('tcomb-form-native');
 var Form = t.form.Form;
 
 var Conditions = t.enums({
-  T: 'Tres Bon Etat',
-  C: 'Correc I',
-  D: 'Defecteux'
+  green: 'Tres Bon Etat',
+  orange: 'Correc I',
+  red: 'Defecteux'
 });
 
 var Raft = t.struct({
@@ -18,6 +18,12 @@ var Raft = t.struct({
 });
 
 const options = {
+  fields: {
+    Condition: {
+      nullOption: {value: '', text: "Répondre s'il vous plait"}
+    }
+  },
+  auto: 'placeholders'
   // fields: {
   //   installed: {
   //     config: {
@@ -50,7 +56,7 @@ export default class RaftScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:Raft').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -59,34 +65,45 @@ export default class RaftScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:Raft');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
+  // async loadStoredData() {
+  //   var value = "{}"
+  //   try {
+  //     value = await AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable');
+  //     if (value !== null){
+  //       console.log("loaded some data");
+  //       console.log(value);
+  //     }
+  //   } catch (error) {
+  //     value = "{}"
+  //     console.log("could not retrieve data")
+  //     console.log(error)
+  //   }
+  //   return JSON.parse(value);
+  // }
+
+
+
+// Struct {
+//   "Commentary": null,
+//   "Condition": "T",
+//   "Price": null,
+// }
 
   async onPress() {
+    const { navigate } = this.props.navigation;
     // call getValue() to get the values of the form
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
-      console.log(value); // value here is an instance of Person
+      console.log(value); 
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:Raft', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:Raft:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:Raft:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Mechanical', {})
     }
   };
 
@@ -105,7 +122,7 @@ export default class RaftScreen extends React.Component {
          <Text>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
          <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
-         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toDateString()}</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
           type={Raft}

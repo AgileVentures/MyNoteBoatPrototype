@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import {  AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -22,8 +22,19 @@ export default class MechanicalScreen extends React.Component {
       this.state = {
           showTestVHF: false,
           showLifeJackets: false,
-          showRaft: false
+          showRaft: false,
+          isLoading: true
       };
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable').then((value) => {
+      if (value === null){ value = '{ "Condition": "red" }' }
+      this.setState({
+        isLoading: false,
+        raftColour: JSON.parse(value).Condition
+      });
+    });
   }
 
   toggleTestVHF = () => {
@@ -37,6 +48,9 @@ export default class MechanicalScreen extends React.Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <View><NativeText>Loading...</NativeText></View>;
+    }
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
@@ -103,7 +117,7 @@ export default class MechanicalScreen extends React.Component {
             cx="100"
             cy="240"
             r="10"
-            fill="red"
+            fill={this.state.raftColour}
             onPress={this.toggleRaft}
           />
           { this.state.showRaft &&
