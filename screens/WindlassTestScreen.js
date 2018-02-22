@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 var t = require('tcomb-form-native');
 
@@ -93,7 +93,7 @@ export default class WindlassTestScreen extends React.Component {
       return <View><Text>Loading...</Text></View>;
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text>Inspection visuelle du guideau. </Text>
         <Text>Inspection visuelle de la commande du guideau et du système de secours.</Text>
         <Text>Essai de guideau. Dévirer et virer l’ancre.</Text>
@@ -111,7 +111,7 @@ export default class WindlassTestScreen extends React.Component {
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
           <Text style={styles.buttonText}>Save</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -127,8 +127,6 @@ export default class WindlassTestScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
