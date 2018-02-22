@@ -6,7 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
 import WindlassTestScreen from './../screens/WindlassTestScreen';
-// import LifeJacketsScreen from './../screens/LifeJacketsScreen';
+import RudderCommandTestScreen from './../screens/RudderCommandTestScreen';
 // import RaftScreen from './../screens/RaftScreen';
 
 import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
@@ -65,6 +65,9 @@ const RootStackNavigator = StackNavigator(
     },
     InspectClutch: {
       screen: InspectClutchScreen,
+    },
+    RudderCommandTest: {
+      screen: RudderCommandTestScreen,
     },
   },
   {
