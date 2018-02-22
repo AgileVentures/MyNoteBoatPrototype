@@ -12,6 +12,10 @@ import Svg, {
 } from 'react-native-svg';
 import { Font } from 'expo';
 
+import NavigationBar from 'react-native-navbar';
+
+// import HomeButton from './../components/HomeButton'
+
 export default class SecurityScreen extends React.Component {
   static navigationOptions = {
     title: 'Sécurité',
@@ -54,9 +58,23 @@ export default class SecurityScreen extends React.Component {
       return <View><NativeText>Loading...</NativeText></View>;
     }
     const { navigate } = this.props.navigation;
+
+    const leftButtonConfig = {
+      title: 'Home',
+      handler: () => navigate('Main', {}),
+    };
+
+    const titleConfig = {
+      title: 'myNoteBoat',
+    };
+
     return (
       <View style={styles.container}>
-
+      <NavigationBar
+        tintColor="#1C87B2"
+        title={titleConfig}
+        leftButton={leftButtonConfig}
+      />
         <Svg
             height="972"
             width="578"
