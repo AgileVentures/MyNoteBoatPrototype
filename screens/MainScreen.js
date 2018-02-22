@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Image as NativeImage, StyleSheet, View } from 'react-native';
+import { Dimensions, Image as NativeImage, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -44,7 +44,9 @@ export default class MainScreen extends React.Component {
                  source={require('../assets/images/mynoteboat.png')}
                 />
               }
-        leftButton={leftButtonConfig}
+        leftButton={<NativeImage 
+                 source={require('../assets/images/splash-64.png')}
+                />}
       />
       <Svg width="500" height="900">
         <G x="10" y="50">
@@ -174,13 +176,8 @@ export default class MainScreen extends React.Component {
               strokeWidth="50" 
               d={arc5} 
             />
-          <Image
-            x="50"
-            y="150"
-            height="100%"
-            width="100%"
-            preserveAspectRatio="xMidYMid slice"
-            href={require("../assets/images/boating_transparent.png")}
+          <NativeImage
+            source={require("../assets/images/boating_transparent.png")}
           />
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Image as NativeImage, Text as NativeText, TouchableOpacity, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -59,21 +59,19 @@ export default class SecurityScreen extends React.Component {
     }
     const { navigate } = this.props.navigation;
 
-    const leftButtonConfig = {
-      title: 'Home',
-      handler: () => navigate('Main', {}),
-    };
-
-    const titleConfig = {
-      title: 'myNoteBoat',
-    };
-
     return (
       <View style={styles.container}>
       <NavigationBar
         tintColor="#1C87B2"
-        title={titleConfig}
-        leftButton={leftButtonConfig}
+        title={<NativeImage 
+                 source={require('../assets/images/mynoteboat.png')}
+                />
+              }
+        leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                <NativeImage 
+                 source={require('../assets/images/splash-64.png')}
+                />
+              </TouchableOpacity>}
       />
         <Svg
             height="972"

@@ -1,6 +1,6 @@
 import React, {  Component  } from 'react';
-import { Text, StyleSheet, ScrollView, View, Image, Alert } from 'react-native';
-
+import { Alert, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import NavigationBar from 'react-native-navbar';
 import CheckBox from 'react-native-check-box';
 
 export default class Reussir_sa_sortie extends Component {
@@ -22,7 +22,18 @@ export default class Reussir_sa_sortie extends Component {
         return (
             
             <View style={styles.container}>
-
+                <NavigationBar
+                  tintColor="#1C87B2"
+                  title={<Image 
+                           source={require('../assets/images/mynoteboat.png')}
+                          />
+                        }
+                  leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                          <Image 
+                           source={require('../assets/images/splash-64.png')}
+                          />
+                        </TouchableOpacity>}
+                />
                 <ScrollView>
                     <View style={styles.line}/>
                     <Text style={styles.heading}>respecter</Text>

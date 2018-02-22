@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Image as NativeImage, Text as NativeText, TouchableOpacity, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -11,6 +11,8 @@ import Svg, {
     Image
 } from 'react-native-svg';
 import { Font } from 'expo';
+
+import NavigationBar from 'react-native-navbar';
 
 export default class HullAndRiggingScreen extends React.Component {
   static navigationOptions = {
@@ -44,7 +46,18 @@ export default class HullAndRiggingScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-
+      <NavigationBar
+        tintColor="#1C87B2"
+        title={<NativeImage 
+                 source={require('../assets/images/mynoteboat.png')}
+                />
+              }
+        leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                <NativeImage 
+                 source={require('../assets/images/splash-64.png')}
+                />
+              </TouchableOpacity>}
+      />
         <Svg
             height="972"
             width="578"

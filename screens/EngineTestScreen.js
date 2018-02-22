@@ -1,6 +1,6 @@
 import React from 'react';
-import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-
+import { AsyncStorage, Image, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
@@ -90,7 +90,21 @@ export default class InspectEngineScreen extends React.Component {
     if (this.state.isLoading) {
       return <View><Text>Loading...</Text></View>;
     }
+    const { navigate } = this.props.navigation;
     return (
+      <View>
+        <NavigationBar
+          tintColor="#1C87B2"
+          title={<Image 
+                   source={require('../assets/images/mynoteboat.png')}
+                  />
+                }
+          leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                  <Image 
+                   source={require('../assets/images/splash-64.png')}
+                  />
+                </TouchableOpacity>}
+        />
       <ScrollView style={styles.container}>
          <Text>Contrôle du bon démarrage du moteur.</Text>
          <Text>Contrôle du débit et de la température de la réfrigération du moteur.</Text>
@@ -110,6 +124,7 @@ export default class InspectEngineScreen extends React.Component {
           <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
       </ScrollView>
+      </View>
     );
   }
 }
