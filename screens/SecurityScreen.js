@@ -21,12 +21,12 @@ export default class SecurityScreen extends React.Component {
       super(...arguments);
       this.state = {
           showLifeRaftControl: false,
-          showRudderInspect: false,
+          showLiferingControl: false,
       };
   }
 
-  toggleRudderInspect = () => {
-      this.setState({showRudderInspect: !this.state.showRudderInspect});
+  toggleLiferingControl = () => {
+      this.setState({showLiferingControl: !this.state.showLiferingControl});
   };
   toggleLifeRaftControl = () => {
       this.setState({showLifeRaftControl: !this.state.showLifeRaftControl});
@@ -54,10 +54,10 @@ export default class SecurityScreen extends React.Component {
             cy="320"
             r="10"
             fill="orange"
-            onPress={this.toggleRudderInspect}
+            onPress={this.toggleLiferingControl}
           />
-          { this.state.showRudderInspect &&
-            <G x="80" y="290" onPress={() => navigate('RudderInspect', {})}>
+          { this.state.showLiferingControl &&
+            <G x="80" y="290" onPress={() => navigate('LiferingControl', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -68,7 +68,7 @@ export default class SecurityScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Inspection du gouvernail</Text>
+              >Contrôl de la Bouée Couronne</Text>
             </G>
           }
 
@@ -91,7 +91,7 @@ export default class SecurityScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Contrôl des Brassières</Text>
+              >Contrôl du radeau</Text>
             </G>
           }
 
