@@ -11,7 +11,7 @@ var Conditions = t.enums({
   red: 'Defecteux'
 });
 
-var Raft = t.struct({
+var ClutchTest = t.struct({
   Condition: Conditions,              // a required enum
   Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
@@ -26,9 +26,9 @@ const options = {
   auto: 'placeholders'
 };
 
-export default class RaftScreen extends React.Component {
+export default class ClutchTestScreen extends React.Component {
   static navigationOptions = {
-    title: 'Contrôl du radeau',
+    title: "Essai de l'embrayage",
   };
 
   constructor (props) {
@@ -42,7 +42,7 @@ export default class RaftScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:ClutchTest:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -57,10 +57,10 @@ export default class RaftScreen extends React.Component {
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
-      console.log(value); 
+      console.log(value);
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:Raft:editable', JSON.stringify(value));
-        await AsyncStorage.setItem('@MyNoteBoatStore:Raft:fixed', new Date().toLocaleDateString('fr-FR'));
+        await AsyncStorage.setItem('@MyNoteBoatStore:ClutchTest:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:ClutchTest:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
@@ -75,15 +75,15 @@ export default class RaftScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-         <Text>Inspection du visuel de la coquille du radeau et du bout de déclenchement de la bouteille.</Text>
-         <Text>Vérification de la fin de validité de l’inspection.</Text>
-         <Text>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
+         <Text>Contrôle du bon fonctionnement de l’embrayage en avant et en arrière.</Text>
+         <Text>Contrôler la rotation de l’hélice. </Text>
+         <Text>S’assurer particulièrement de l’absence de point dure sur la commande.</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text>Avant chaque sortie</Text>
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={Raft}
+          type={ClutchTest}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
@@ -107,8 +107,6 @@ export default class RaftScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
