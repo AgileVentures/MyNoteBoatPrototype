@@ -1,6 +1,6 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-
+import { AsyncStorage, Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity,View } from 'react-native';
+import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
@@ -92,8 +92,21 @@ export default class TestVHFScreen extends React.Component {
     if (this.state.isLoading) {
       return <View><Text>Loading...</Text></View>;
     }
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <NavigationBar
+          tintColor="#1C87B2"
+          title={<Image 
+                   source={require('../assets/images/mynoteboat.png')}
+                  />
+                }
+          leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                  <Image 
+                   source={require('../assets/images/splash-64.png')}
+                  />
+                </TouchableOpacity>}
+        />
          <Form
           ref="form"
           type={TestVHF}
