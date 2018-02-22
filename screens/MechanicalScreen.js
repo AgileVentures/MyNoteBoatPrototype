@@ -1,5 +1,5 @@
 import React from 'react';
-import {  AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -20,31 +20,35 @@ export default class MechanicalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTestVHF: false,
-          showLifeJackets: false,
-          showRaft: false,
+          showWindlassTest: false,
+          showRudderCommandTest: false,
+          showClutchTest: false,
+          showEngineTest: false,
           isLoading: true
       };
   }
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:ClutchTest:editable').then((value) => {
       if (value === null){ value = '{ "Condition": "red" }' }
       this.setState({
         isLoading: false,
-        raftColour: JSON.parse(value).Condition
+        ClutchTestColour: JSON.parse(value).Condition
       });
     });
   }
 
-  toggleTestVHF = () => {
-      this.setState({showTestVHF: !this.state.showTestVHF});
+  toggleWindlassTest = () => {
+      this.setState({showWindlassTest: !this.state.showWindlassTest});
   };
-  toggleLifeJackets = () => {
-      this.setState({showLifeJackets: !this.state.showLifeJackets});
+  toggleRudderCommandTest = () => {
+      this.setState({showRudderCommandTest: !this.state.showRudderCommandTest});
   };
-  toggleRaft = () => {
-    this.setState({showRaft: !this.state.showRaft});
+  toggleClutchTest = () => {
+    this.setState({showClutchTest: !this.state.showClutchTest});
+  };
+    toggleEngineTest = () => {
+      this.setState({showEngineTest: !this.state.showEngineTest});
   };
 
   render() {
@@ -72,10 +76,10 @@ export default class MechanicalScreen extends React.Component {
             cy="330"
             r="10"
             fill="red"
-            onPress={this.toggleTestVHF}
+            onPress={this.toggleWindlassTest}
           />
-          { this.state.showTestVHF &&
-            <G x="190" y="300" onPress={() => navigate('TestVHF', {})}>
+          { this.state.showWindlassTest &&
+            <G x="190" y="300" onPress={() => navigate('WindlassTest', {})}>
               <Rect
                 width="80"
                 height="20"
@@ -86,7 +90,7 @@ export default class MechanicalScreen extends React.Component {
                fontWeight="bold"
                fontSize="16"
                fill="blue"
-              >Test VHF</Text>
+              >Essai du Guindeau</Text>
             </G>
           }
 
@@ -95,10 +99,10 @@ export default class MechanicalScreen extends React.Component {
             cy="280"
             r="10"
             fill="green"
-            onPress={this.toggleLifeJackets}
+            onPress={this.toggleRudderCommandTest}
           />
-          { this.state.showLifeJackets &&
-            <G x="140" y="250" onPress={() => navigate('LifeJackets', {})}>
+          { this.state.showRudderCommandTest &&
+            <G x="140" y="250" onPress={() => navigate('RudderCommandTest', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -109,7 +113,7 @@ export default class MechanicalScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Inspection de Brassières</Text>
+              >Essai de la Commande du Gouvernail</Text>
             </G>
           }
 
@@ -117,11 +121,11 @@ export default class MechanicalScreen extends React.Component {
             cx="100"
             cy="240"
             r="10"
-            fill={this.state.raftColour}
-            onPress={this.toggleRaft}
+            fill={this.state.ClutchTestColour}
+            onPress={this.toggleClutchTest}
           />
-          { this.state.showRaft &&
-            <G x="100" y="210" onPress={() => navigate('Raft', {})}>
+          { this.state.showClutchTest &&
+            <G x="100" y="210" onPress={() => navigate('ClutchTest', {})}>
               <Rect
                 width="140"
                 height="20"
@@ -132,9 +136,33 @@ export default class MechanicalScreen extends React.Component {
                fontWeight="bold"
                fontSize="16"
                fill="blue"
-              >Contrôle du radeau</Text>
+              >"Essai de l'embrayage"</Text>
             </G>
           }
+
+          <Circle
+            cx="80"
+            cy="320"
+            r="10"
+            fill="orange"
+            onPress={this.toggleEngineTest}
+          />
+          { this.state.showEngineTest &&
+            <G x="80" y="290" onPress={() => navigate('EngineTest', {})}>
+              <Rect
+                width="185"
+                height="20"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >Essai du Moteur</Text>
+            </G>
+          }
+
 
         </Svg>
 

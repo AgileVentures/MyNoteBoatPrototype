@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { AsyncStorage, Dimensions, Text as NativeText, StyleSheet, View } from 'react-native';
 import Svg, {
     Circle,
     Path,
@@ -12,6 +12,10 @@ import Svg, {
 } from 'react-native-svg';
 import { Font } from 'expo';
 
+import NavigationBar from 'react-native-navbar';
+
+// import HomeButton from './../components/HomeButton'
+
 export default class SecurityScreen extends React.Component {
   static navigationOptions = {
     title: 'Sécurité',
@@ -21,22 +25,56 @@ export default class SecurityScreen extends React.Component {
       super(...arguments);
       this.state = {
           showLifeRaftControl: false,
-          showRudderInspect: false,
+          showLifeRingControl: false,
+          isLoading: true
       };
   }
 
-  toggleRudderInspect = () => {
-      this.setState({showRudderInspect: !this.state.showRudderInspect});
+  componentDidMount() {
+    AsyncStorage.getItem('@MyNoteBoatStore:LifeRingControl:editable').then((value) => {
+      if (value === null){ value = '{ "Condition": "red" }' }
+      this.setState({
+        LifeRingControlColour: JSON.parse(value).Condition
+      });
+      AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl:editable').then((value) => {
+        if (value === null){ value = '{ "Condition": "red" }' }
+        this.setState({
+          isLoading: false,
+          LifeRaftControlColour: JSON.parse(value).Condition
+        });
+      });
+    });
+  }
+
+  toggleLifeRingControl = () => {
+      this.setState({showLifeRingControl: !this.state.showLifeRingControl});
   };
   toggleLifeRaftControl = () => {
       this.setState({showLifeRaftControl: !this.state.showLifeRaftControl});
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <View><NativeText>Loading...</NativeText></View>;
+    }
     const { navigate } = this.props.navigation;
+
+    const leftButtonConfig = {
+      title: 'Home',
+      handler: () => navigate('Main', {}),
+    };
+
+    const titleConfig = {
+      title: 'myNoteBoat',
+    };
+
     return (
       <View style={styles.container}>
-
+      <NavigationBar
+        tintColor="#1C87B2"
+        title={titleConfig}
+        leftButton={leftButtonConfig}
+      />
         <Svg
             height="972"
             width="578"
@@ -53,11 +91,11 @@ export default class SecurityScreen extends React.Component {
             cx="80"
             cy="320"
             r="10"
-            fill="orange"
-            onPress={this.toggleRudderInspect}
+            fill={this.state.LifeRingControlColour}
+            onPress={this.toggleLifeRingControl}
           />
-          { this.state.showRudderInspect &&
-            <G x="80" y="290" onPress={() => navigate('RudderInspect', {})}>
+          { this.state.showLifeRingControl &&
+            <G x="80" y="290" onPress={() => navigate('LifeRingControl', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -68,7 +106,7 @@ export default class SecurityScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Inspection du gouvernail</Text>
+              >Contrôl de la Bouée Couronne</Text>
             </G>
           }
 
@@ -76,7 +114,7 @@ export default class SecurityScreen extends React.Component {
             cx="100"
             cy="240"
             r="10"
-            fill="green"
+            fill={this.state.LifeRaftControlColour}
             onPress={this.toggleLifeRaftControl}
           />
           { this.state.showLifeRaftControl &&
@@ -91,7 +129,7 @@ export default class SecurityScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Contrôl des Brassières</Text>
+              >Contrôl du radeau</Text>
             </G>
           }
 

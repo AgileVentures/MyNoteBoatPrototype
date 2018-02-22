@@ -5,64 +5,66 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
-import TestVHFScreen from './../screens/TestVHFScreen';
-import LifeJacketsScreen from './../screens/LifeJacketsScreen';
-import RaftScreen from './../screens/RaftScreen';
+import TestVHFScreen from './../screens/WindlassTest';
+// import LifeJacketsScreen from './../screens/LifeJacketsScreen';
+// import RaftScreen from './../screens/RaftScreen';
 
 import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
-import RudderInspectScreen from './../screens/RudderInspectScreen';
+import LifeRingControlScreen from './../screens/LifeRingControlScreen';
+// import RudderInspectScreen from './../screens/RudderInspectScreen';
 import InspectBatteryScreen from './../screens/InspectBatteryScreen';
 import TestNavLightsScreen from './../screens/TestNavLightsScreen';
 import InspectHullScreen from './../screens/InspectHullScreen';
-import InspectEngineScreen from './../screens/InspectEngineScreen';
+import EngineTestScreen from './../screens/EngineTestScreen';
 import InspectKeelScreen from './../screens/InspectKeelScreen';
 import InspectRudderScreen from './../screens/InspectRudderScreen';
+import InspectClutchScreen from './../screens/InspectClutchScreen';
 
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
   {
     Main: {
-      screen: MainScreen,
+      screen: MainScreen, navigationOptions: { header: null }
+    },
+    Checklists: {
+      screen: NavigationTabNav, navigationOptions: { header: null }
     },
     Entretien: {
-      screen: MainTabNavigator,
+      screen: MainTabNavigator, navigationOptions: { header: null }
     },
     Navigation: {
-      screen: NavigationTabNav,
+      screen: NavigationTabNav, navigationOptions: { header: null }
     },
     TestVHF: {
-      screen: TestVHFScreen,
-    },
-    LifeJackets: {
-      screen: LifeJacketsScreen,
-    },
-    Raft: {
-      screen: RaftScreen,
+      screen: TestVHFScreen, navigationOptions: { header: null }
     },
     LifeRaftControl: {
-      screen: LifeRaftControlScreen,
+      screen: LifeRaftControlScreen, navigationOptions: { header: null }
     },
-    RudderInspect: {
-      screen: RudderInspectScreen,
+    LifeRingControl: {
+      screen: LifeRingControlScreen, navigationOptions: { header: null }
     },
     InspectBattery: {
-      screen: InspectBatteryScreen,
+      screen: InspectBatteryScreen, navigationOptions: { header: null }
     },
     TestNavLights: {
-      screen: TestNavLightsScreen,
+      screen: TestNavLightsScreen, navigationOptions: { header: null }
     },
     InspectHull: {
-      screen: InspectHullScreen,
+      screen: InspectHullScreen, navigationOptions: { header: null }
     },
     InspectKeel: {
-      screen: InspectKeelScreen,
+      screen: InspectKeelScreen, navigationOptions: { header: null }
     },
     InspectRudder: {
-      screen: InspectRudderScreen,
+      screen: InspectRudderScreen, navigationOptions: { header: null }
     },
-    InspectEngine: {
-      screen: InspectEngineScreen,
+    EngineTest: {
+      screen: EngineTestScreen, navigationOptions: { header: null }
+    },
+    InspectClutch: {
+      screen: InspectClutchScreen, navigationOptions: { header: null }
     },
   },
   {

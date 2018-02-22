@@ -93,7 +93,7 @@ export default class ElectricalScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Tester les feux</Text>
+              >Essai des feux</Text>
               <Text
                   x="5"
                   y="20"

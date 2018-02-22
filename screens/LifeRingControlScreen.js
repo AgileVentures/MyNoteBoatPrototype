@@ -11,7 +11,7 @@ var Conditions = t.enums({
   red: 'Defecteux'
 });
 
-var LifeRaftControl = t.struct({
+var LifeRingControl = t.struct({
   Condition: Conditions,              // a required enum
   Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
@@ -26,9 +26,9 @@ const options = {
   auto: 'placeholders'
 };
 
-export default class LifeRaftControlScreen extends React.Component {
+export default class LifeRingControlScreen extends React.Component {
   static navigationOptions = {
-    title: 'Contrôl du radeau',
+    title: 'Contrôl de la Bouée Couronne',
   };
 
   constructor (props) {
@@ -42,7 +42,7 @@ export default class LifeRaftControlScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:LifeRaftControl:editable').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:LifeRingControl:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -58,8 +58,8 @@ export default class LifeRaftControlScreen extends React.Component {
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRaftControl:editable', JSON.stringify(value));
-        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRaftControl:fixed', new Date().toLocaleDateString('fr-FR'));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRingControl:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:LifeRingControl:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
@@ -74,15 +74,16 @@ export default class LifeRaftControlScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-         <Text>Inspection du visuel de la coquille du radeau et du bout de déclenchement de la bouteille.</Text>
-         <Text>Vérification de la fin de validité de l’inspection. </Text>
-         <Text>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
+         <Text>Inspection visuelle de la bouée couronne.</Text>
+         <Text>Essai du feu à retournement.</Text>
+         <Text>Contrôle du marquage (Nom et port du bateau)</Text>
+         <Text>Contrôle des bandes réfléchissantes</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
          <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={LifeRaftControl}
+          type={LifeRingControl}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
@@ -94,6 +95,14 @@ export default class LifeRaftControlScreen extends React.Component {
     );
   }
 }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 15,
+//     backgroundColor: '#fff',
+//   },
+// });
 
 
 const styles = StyleSheet.create({

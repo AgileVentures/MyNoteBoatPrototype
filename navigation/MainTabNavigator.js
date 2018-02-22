@@ -34,11 +34,11 @@ export default TabNavigator(
           case 'Security':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-shirt${focused ? '' : '-outline'}`
-                : 'md-shirt';
+                ? `ios-help-buoy${focused ? '' : '-outline'}`
+                : 'md-help-buoy';
             break;
           case 'Mechanical':
-            iconName = Platform.OS === 'ios' ? `ios-build${focused ? '' : '-outline'}` : 'md-build';
+            iconName = Platform.OS === 'ios' ? `ios-construct${focused ? '' : '-outline'}` : 'md-construct';
             break;
           case 'Electrical':
             iconName = Platform.OS === 'ios' ? `ios-flash${focused ? '' : '-outline'}` : 'md-flash';

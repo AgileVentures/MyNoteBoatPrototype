@@ -122,7 +122,7 @@ export default class HullAndRiggingScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Inspection de la Quille</Text>
+              >Inspection des Boulons de Quille</Text>
             </G>
           }
 

@@ -11,11 +11,12 @@ var Conditions = t.enums({
   red: 'Defecteux'
 });
 
-var RudderInspect = t.struct({
+var InspectClutch = t.struct({
   Condition: Conditions,              // a required enum
   Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
 });
+
 
 const options = {
   fields: {
@@ -26,9 +27,9 @@ const options = {
   auto: 'placeholders'
 };
 
-export default class RudderInspectScreen extends React.Component {
+export default class InspectClutchScreen extends React.Component {
   static navigationOptions = {
-    title: 'Inspection du gouvernail',
+    title: 'Essai de l’embrayage',
   };
 
   constructor (props) {
@@ -42,7 +43,7 @@ export default class RudderInspectScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:RudderInspect').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:InspectClutch').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -54,7 +55,7 @@ export default class RudderInspectScreen extends React.Component {
   async loadStoredData() {
     var value = "{}"
     try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:RudderInspect');
+      value = await AsyncStorage.getItem('@MyNoteBoatStore:InspectClutch');
       if (value !== null){
         console.log("loaded some data");
         console.log(value);
@@ -74,7 +75,7 @@ export default class RudderInspectScreen extends React.Component {
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:RudderInspect', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:InspectClutch', JSON.stringify(value));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
@@ -92,14 +93,15 @@ export default class RudderInspectScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-         <Text>Inspection visuelle du gouvernail. Rechercher une déformation ou des Contrôle le jeu de la mèche dans l’axe.</Text>
-         <Text>Inspection visuelle des paliers.</Text>
+         <Text>Contrôle du bon fonctionnement de l’embrayage en avant et en arrière.</Text>
+         <Text>Contrôler la rotation de l’hélice.</Text>
+         <Text>S’assurer particulièrement de l’absence de point dure sur la commande.</Text>
          <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text>Avant chaque sortie</Text>
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={RudderInspect}
+          type={InspectClutch}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
@@ -111,15 +113,6 @@ export default class RudderInspectScreen extends React.Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     paddingTop: 15,
-//     backgroundColor: '#fff',
-//   },
-// });
-
 
 const styles = StyleSheet.create({
   container: {
