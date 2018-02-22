@@ -24,13 +24,6 @@ const options = {
     }
   },
   auto: 'placeholders'
-  // fields: {
-  //   installed: {
-  //     config: {
-  //       format: date => format(date, "DD-MM-YYYY")
-  //     }
-  //   }
-  // }
 };
 
 export default class RaftScreen extends React.Component {
@@ -42,13 +35,6 @@ export default class RaftScreen extends React.Component {
     super(props);
 
     this.onPress = this.onPress.bind(this);
-    // var value = await this.loadStoredData()
-    // console.log('this is what we are setting');
-    // console.log(value);
-    // this.state = {
-    //   value: value //{ checked: "recently",
-    //            //installed: "long ago" }
-    // };
   }
 
   state = {
@@ -64,30 +50,6 @@ export default class RaftScreen extends React.Component {
       });
     });
   }
-
-  // async loadStoredData() {
-  //   var value = "{}"
-  //   try {
-  //     value = await AsyncStorage.getItem('@MyNoteBoatStore:Raft:editable');
-  //     if (value !== null){
-  //       console.log("loaded some data");
-  //       console.log(value);
-  //     }
-  //   } catch (error) {
-  //     value = "{}"
-  //     console.log("could not retrieve data")
-  //     console.log(error)
-  //   }
-  //   return JSON.parse(value);
-  // }
-
-
-
-// Struct {
-//   "Commentary": null,
-//   "Condition": "T",
-//   "Price": null,
-// }
 
   async onPress() {
     const { navigate } = this.props.navigation;
@@ -106,10 +68,6 @@ export default class RaftScreen extends React.Component {
       navigate('Mechanical', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
