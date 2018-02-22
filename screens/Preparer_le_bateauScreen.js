@@ -88,7 +88,7 @@ export default class Preparer_le_bateauScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#48BBEC'
+        backgroundColor: 'white'
     },
     item: {
         flexDirection: 'row',

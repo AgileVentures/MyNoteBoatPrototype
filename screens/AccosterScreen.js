@@ -88,7 +88,7 @@ export default class AccosterScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'yellow'
+        backgroundColor: '#CBE8FB'
     },
     item: {
         flexDirection: 'row',

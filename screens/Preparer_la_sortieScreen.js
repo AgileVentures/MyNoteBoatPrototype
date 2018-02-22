@@ -88,7 +88,7 @@ export default class Preparer_la_sortieScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'aqua'
+        backgroundColor: 'white'
     },
     item: {
         flexDirection: 'row',

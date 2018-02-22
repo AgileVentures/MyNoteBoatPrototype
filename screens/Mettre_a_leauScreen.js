@@ -88,7 +88,7 @@ export default class Mettre_a_leauScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'orange'
+        backgroundColor: '#CBE8FB'
     },
     item: {
         flexDirection: 'row',
