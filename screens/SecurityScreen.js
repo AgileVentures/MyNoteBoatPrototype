@@ -20,15 +20,16 @@ export default class SecurityScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTestVHF: false
+          showLifeRaftControl: false,
+          showRudderInspect: false,
       };
   }
 
-  toggleTestVHF = () => {
-      this.setState({showTestVHF: !this.state.showTestVHF});
+  toggleRudderInspect = () => {
+      this.setState({showRudderInspect: !this.state.showRudderInspect});
   };
-  toggleLifeJackets = () => {
-      this.setState({showLifeJackets: !this.state.showLifeJackets});
+  toggleLifeRaftControl = () => {
+      this.setState({showLifeRaftControl: !this.state.showLifeRaftControl});
   };
 
   render() {
@@ -40,8 +41,8 @@ export default class SecurityScreen extends React.Component {
             height="972"
             width="578"
         >
-          <Image 
-            x="50" 
+          <Image
+            x="50"
             y="5"
             height="400"
             width="244"
@@ -49,45 +50,49 @@ export default class SecurityScreen extends React.Component {
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
-            cx="190"
-            cy="330"
+            cx="80"
+            cy="320"
             r="10"
-            fill="red"
-            onPress={this.toggleTestVHF}
+            fill="orange"
+            onPress={this.toggleRudderInspect}
           />
-          { this.state.showTestVHF &&
-            <G x="200" y="300" onPress={() => navigate('TestVHF', {})}>
+          { this.state.showRudderInspect &&
+            <G x="80" y="290" onPress={() => navigate('RudderInspect', {})}>
               <Rect
-                width="80"
+                width="185"
                 height="20"
                 fill="rgba(250, 250, 250, 0)"
               />
               <Text
-               textAnchor="start"
-               fontWeight="bold"
-               fontSize="16"
-               fill="blue"
-              >Test VHF</Text>
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >Inspection du gouvernail</Text>
             </G>
           }
 
           <Circle
-            cx="140"
-            cy="280"
+            cx="100"
+            cy="240"
             r="10"
             fill="green"
-            onPress={this.toggleLifeJackets}
+            onPress={this.toggleLifeRaftControl}
           />
-          { this.state.showLifeJackets &&
-            <Text
-                x="200"
-                y="240"
-                textAnchor="middle"
-                fontWeight="bold"
-                fontSize="16"
-                fill="blue"
-                onPress={() => navigate('TestVHF', {})}
-            >Inspection de Brassières</Text>
+          { this.state.showLifeRaftControl &&
+            <G x="100" y="210" onPress={() => navigate('LifeRaftControl', {})}>
+              <Rect
+                width="185"
+                height="20"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >Contrôl des Brassières</Text>
+            </G>
           }
 
         </Svg>
