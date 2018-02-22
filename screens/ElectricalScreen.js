@@ -20,15 +20,18 @@ export default class ElectricalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showTestVHF: false
+          showInspectBattery: false
+      };
+      this.state = {
+          showTestNavLights: false
       };
   }
 
-  toggleTestVHF = () => {
-      this.setState({showTestVHF: !this.state.showTestVHF});
+  toggleInspectBattery = () => {
+      this.setState({showInspectBattery: !this.state.showInspectBattery});
   };
-  toggleLifeJackets = () => {
-      this.setState({showLifeJackets: !this.state.showLifeJackets});
+  toggleTestNavLights = () => {
+      this.setState({showTestNavLights: !this.state.showTestNavLights});
   };
 
   render() {
@@ -40,8 +43,8 @@ export default class ElectricalScreen extends React.Component {
             height="972"
             width="578"
         >
-          <Image 
-            x="50" 
+          <Image
+            x="50"
             y="5"
             height="400"
             width="244"
@@ -49,16 +52,16 @@ export default class ElectricalScreen extends React.Component {
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
-            cx="190"
-            cy="330"
+            cx="150"
+            cy="300"
             r="10"
             fill="red"
-            onPress={this.toggleTestVHF}
+            onPress={this.toggleInspectBattery}
           />
-          { this.state.showTestVHF &&
-            <G x="200" y="300" onPress={() => navigate('TestVHF', {})}>
+          { this.state.showInspectBattery &&
+            <G x="150" y="270" onPress={() => navigate('InspectBattery', {})}>
               <Rect
-                width="80"
+                width="180"
                 height="20"
                 fill="rgba(250, 250, 250, 0)"
               />
@@ -67,27 +70,39 @@ export default class ElectricalScreen extends React.Component {
                fontWeight="bold"
                fontSize="16"
                fill="blue"
-              >Test VHF</Text>
+              >Inspection de la batterie</Text>
             </G>
           }
 
           <Circle
-            cx="140"
-            cy="280"
+            cx="290"
+            cy="370"
             r="10"
             fill="green"
-            onPress={this.toggleLifeJackets}
+            onPress={this.toggleTestNavLights}
           />
-          { this.state.showLifeJackets &&
-            <Text
-                x="200"
-                y="240"
-                textAnchor="middle"
-                fontWeight="bold"
-                fontSize="16"
-                fill="blue"
-                onPress={() => navigate('TestVHF', {})}
-            >Inspection de Brassières</Text>
+          { this.state.showTestNavLights &&
+            <G x="260" y="320" onPress={() => navigate('TestNavLights', {})}>
+              <Rect
+                width="120"
+                height="40"
+                fill="rgba(250, 250, 250, 0)"
+              />
+              <Text
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >Tester les feux</Text>
+              <Text
+                  x="5"
+                  y="20"
+                  textAnchor="start"
+                  fontWeight="bold"
+                  fontSize="16"
+                  fill="blue"
+              >de navigation</Text>
+            </G>
           }
 
         </Svg>
