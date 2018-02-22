@@ -5,7 +5,7 @@ var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
-var TestVHF = t.struct({
+var WindlassTest = t.struct({
   installed: t.String,              // a required string
   checked: t.String,               // a required string
   cost: t.maybe(t.String)     // an optional string
@@ -21,9 +21,9 @@ const options = {
   // }
 };
 
-export default class TestVHFScreen extends React.Component {
+export default class WindlassTestScreen extends React.Component {
   static navigationOptions = {
-    title: 'Test VHF',
+    title: 'Essai du Guindeau',
   };
 
   constructor (props) {
@@ -35,7 +35,7 @@ export default class TestVHFScreen extends React.Component {
     // console.log(value);
     // this.state = {
     //   value: value //{ checked: "recently",
-    //            //installed: "long ago" } 
+    //            //installed: "long ago" }
     // };
   }
 
@@ -44,7 +44,7 @@ export default class TestVHFScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:TestVHF').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -56,7 +56,7 @@ export default class TestVHFScreen extends React.Component {
   async loadStoredData() {
     var value = "{}"
     try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:TestVHF');
+      value = await AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest');
       if (value !== null){
         console.log("loaded some data");
         console.log(value);
@@ -76,7 +76,7 @@ export default class TestVHFScreen extends React.Component {
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:TestVHF', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest', JSON.stringify(value));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
@@ -94,9 +94,16 @@ export default class TestVHFScreen extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <Text>Inspection visuelle du guideau. </Text>
+        <Text>Inspection visuelle de la commande du guideau et du système de secours.</Text>
+        <Text>Essai de guideau. Dévirer et virer l’ancre.</Text>
+        <Text>Contrôle du système de saisissage de l’ancre.</Text>
+         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={TestVHF}
+          type={WindlassTest}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
