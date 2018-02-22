@@ -1,5 +1,5 @@
 import React, {  Component  } from 'react';
-import { StyleSheet, ScrollView, View, Image, Alert } from 'react-native';
+import { Text, StyleSheet, ScrollView, View, Image, Alert } from 'react-native';
 
 import CheckBox from 'react-native-check-box';
 
@@ -24,13 +24,17 @@ export default class AccosterScreen extends Component {
             <View style={styles.container}>
 
                 <ScrollView>
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>Préparer l’accostage</Text>
+                    <View style={styles.line}/>
+
                     {[
-                    <View key={0}style={styles.item}>
+                    <View key={0} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"Relever le moteur"}
+                            leftText={"décrire la manoeuvre"}
                         />
                     </View>, 
                     <View key={1}style={styles.item}>
@@ -38,7 +42,7 @@ export default class AccosterScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"Mettre le(s) nâbles(s)"}
+                            leftText={"préparer 2 amarres et pare-battage"}
                         />
                     </View>,
                     <View key={2} style={styles.item}>
@@ -46,7 +50,7 @@ export default class AccosterScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"2 aussières à poste"}
+                            leftText={"arrondir le long du quai"}
                         />
                     </View>,
                     <View key={3} style={styles.item}>
@@ -54,23 +58,36 @@ export default class AccosterScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"passer la marche arrière"}
+                            leftText={"battre en arrière pour stopper"}
                         />
-                    </View>,
-                    <View key={4} style={styles.item}>
+                    </View>
+                    ]}
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>Accoster</Text>
+                    <View style={styles.line}/>
+                    {[
+                    <View key={0} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"larguer la sangle de hissage"}
+                            leftText={"tourner l’amarre avant"}
                         />
                     </View>,
-                    <View key={5} style={styles.item}>
+                    <View key={1} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"filer avec les aussières"}
+                            leftText={"tourner l’amarre arrière"}
+                        />
+                    </View>,                    
+                    <View key={2} style={styles.item}>
+                        <CheckBox
+                            style={{ flex: 1, padding: 10 }}
+                            onClick={() => this.setState({ checked: !this.state.checked })}
+                            isChecked={this.state.checked}
+                            leftText={"finir l’amarrage puis stopper"}
                         />
                     </View>
 
@@ -95,7 +112,13 @@ const styles = StyleSheet.create({
     },
     line: {
         flex: 1,
-        height: 0.3,
-        backgroundColor: 'darkgray',
+        height: 0.9,
+        backgroundColor: 'navy',
     },
+    heading: {
+        fontWeight: "bold",
+        textShadowRadius: 25,
+        textShadowColor: "navy"
+
+    }
 })

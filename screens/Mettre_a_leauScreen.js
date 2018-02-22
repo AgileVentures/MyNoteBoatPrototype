@@ -1,11 +1,11 @@
 import React, {  Component  } from 'react';
-import { StyleSheet, ScrollView, View, Image, Alert } from 'react-native';
+import { Text, StyleSheet, ScrollView, View, Image, Alert } from 'react-native';
 
 import CheckBox from 'react-native-check-box';
 
 export default class Mettre_a_leauScreen extends Component {
     static navigationOptions = {
-      title: 'Mettre_a_leau',
+      title: 'Mettre son bateau à l’eau',
     };
 
     constructor () {
@@ -24,13 +24,17 @@ export default class Mettre_a_leauScreen extends Component {
             <View style={styles.container}>
 
                 <ScrollView>
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>avant de reculer</Text>
+                    <View style={styles.line}/>
+
                     {[
-                    <View key={0}style={styles.item}>
+                    <View key={0} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"Relever le moteur"}
+                            leftText={"relever le moteur"}
                         />
                     </View>, 
                     <View key={1}style={styles.item}>
@@ -54,10 +58,23 @@ export default class Mettre_a_leauScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"passer la marche arrière"}
+                            leftText={"larguer les sangles - sasissage"}
                         />
                     </View>,
                     <View key={4} style={styles.item}>
+                    <CheckBox
+                        style={{ flex: 1, padding: 10 }}
+                        onClick={() => this.setState({ checked: !this.state.checked })}
+                        isChecked={this.state.checked}
+                        leftText={"passer la marche arrière"}
+                    />
+                </View>
+                    ]}
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>la remorque touche l’eau</Text>
+                    <View style={styles.line}/>
+                    {[
+                    <View key={0} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
@@ -65,7 +82,7 @@ export default class Mettre_a_leauScreen extends Component {
                             leftText={"larguer la sangle de hissage"}
                         />
                     </View>,
-                    <View key={5} style={styles.item}>
+                    <View key={1} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
@@ -88,14 +105,20 @@ export default class Mettre_a_leauScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#CBE8FB'
+        backgroundColor: 'white'
     },
     item: {
         flexDirection: 'row',
     },
     line: {
         flex: 1,
-        height: 0.3,
-        backgroundColor: 'darkgray',
+        height: 0.9,
+        backgroundColor: 'navy',
     },
+    heading: {
+        fontWeight: "bold",
+        textShadowRadius: 25,
+        textShadowColor: "navy"
+
+    }
 })
