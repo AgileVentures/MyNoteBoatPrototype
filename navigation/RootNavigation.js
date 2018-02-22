@@ -38,17 +38,8 @@ const RootStackNavigator = StackNavigator(
     TestVHF: {
       screen: TestVHFScreen,
     },
-    LifeJackets: {
-      screen: LifeJacketsScreen,
-    },
-    Raft: {
-      screen: RaftScreen,
-    },
     LifeRaftControl: {
       screen: LifeRaftControlScreen,
-    },
-    RudderInspect: {
-      screen: RudderInspectScreen,
     },
     InspectBattery: {
       screen: InspectBatteryScreen,
