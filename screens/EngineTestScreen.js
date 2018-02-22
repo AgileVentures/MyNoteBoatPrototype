@@ -11,7 +11,7 @@ var Conditions = t.enums({
   red: 'Defecteux'
 });
 
-var InspectEngine = t.struct({
+var EngineTest = t.struct({
   Condition: Conditions,              // a required enum
   Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
@@ -26,7 +26,7 @@ const options = {
   auto: 'placeholders'
 };
 
-export default class InspectEngineScreen extends React.Component {
+export default class EngineTestScreen extends React.Component {
   static navigationOptions = {
     title: 'Essai du moteur',
   };
@@ -42,7 +42,7 @@ export default class InspectEngineScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:InspectEngine').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:EngineTest:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -51,34 +51,20 @@ export default class InspectEngineScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:InspectEngine');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:InspectEngine', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:EngineTest:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:EngineTest', JSON.stringify(value));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Mechanical', {})
     }
   };
 
@@ -115,7 +101,7 @@ export default class InspectEngineScreen extends React.Component {
          <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={InspectEngine}
+          type={EngineTest}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}

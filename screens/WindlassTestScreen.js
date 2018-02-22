@@ -1,29 +1,34 @@
 import React from 'react';
-import { AsyncStorage, Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity,View } from 'react-native';
+import { AsyncStorage, Image, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
-var TestVHF = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
-  cost: t.maybe(t.String)     // an optional string
+var Conditions = t.enums({
+  green: 'Tres Bon Etat',
+  orange: 'Correc I',
+  red: 'Defecteux'
+});
+
+var WindlassTest = t.struct({
+  Condition: Conditions,              // a required enum
+  Commentary: t.maybe(t.String),               // a required string
+  Price: t.maybe(t.String)     // an optional string
 });
 
 const options = {
-  // fields: {
-  //   installed: {
-  //     config: {
-  //       format: date => format(date, "DD-MM-YYYY")
-  //     }
-  //   }
-  // }
+  fields: {
+    Condition: {
+      nullOption: {value: '', text: "Répondre s'il vous plait"}
+    }
+  },
+  auto: 'placeholders'
 };
 
-export default class TestVHFScreen extends React.Component {
+export default class WindlassTestScreen extends React.Component {
   static navigationOptions = {
-    title: 'Test VHF',
+    title: 'Essai du Guindeau',
   };
 
   constructor (props) {
@@ -35,7 +40,7 @@ export default class TestVHFScreen extends React.Component {
     // console.log(value);
     // this.state = {
     //   value: value //{ checked: "recently",
-    //            //installed: "long ago" } 
+    //            //installed: "long ago" }
     // };
   }
 
@@ -44,7 +49,7 @@ export default class TestVHFScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:TestVHF').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -53,40 +58,22 @@ export default class TestVHFScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:TestVHF');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:TestVHF', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Mechanical', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
@@ -107,9 +94,17 @@ export default class TestVHFScreen extends React.Component {
                   />
                 </TouchableOpacity>}
         />
+      <ScrollView style={styles.container}>
+        <Text>Inspection visuelle du guideau. </Text>
+        <Text>Inspection visuelle de la commande du guideau et du système de secours.</Text>
+        <Text>Essai de guideau. Dévirer et virer l’ancre.</Text>
+        <Text>Contrôle du système de saisissage de l’ancre.</Text>
+         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={TestVHF}
+          type={WindlassTest}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
@@ -117,7 +112,8 @@ export default class TestVHFScreen extends React.Component {
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
           <Text style={styles.buttonText}>Save</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
+    </View>
     );
   }
 }
@@ -133,8 +129,6 @@ export default class TestVHFScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
