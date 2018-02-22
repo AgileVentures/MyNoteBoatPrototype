@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
-import TestVHFScreen from './../screens/WindlassTest';
+import WindlassTestScreen from './../screens/WindlassTestScreen';
 // import LifeJacketsScreen from './../screens/LifeJacketsScreen';
 // import RaftScreen from './../screens/RaftScreen';
 
@@ -36,8 +36,8 @@ const RootStackNavigator = StackNavigator(
     Navigation: {
       screen: NavigationTabNav,
     },
-    TestVHF: {
-      screen: TestVHFScreen,
+    WindlassTest: {
+      screen: WindlassTestScreen,
     },
     LifeRaftControl: {
       screen: LifeRaftControlScreen,
