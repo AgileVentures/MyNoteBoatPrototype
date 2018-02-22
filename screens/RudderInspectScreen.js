@@ -1,24 +1,29 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
+var Conditions = t.enums({
+  green: 'Tres Bon Etat',
+  orange: 'Correc I',
+  red: 'Defecteux'
+});
+
 var RudderInspect = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
-  cost: t.maybe(t.String)     // an optional string
+  Condition: Conditions,              // a required enum
+  Commentary: t.maybe(t.String),               // a required string
+  Price: t.maybe(t.String)     // an optional string
 });
 
 const options = {
-  // fields: {
-  //   installed: {
-  //     config: {
-  //       format: date => format(date, "DD-MM-YYYY")
-  //     }
-  //   }
-  // }
+  fields: {
+    Condition: {
+      nullOption: {value: '', text: "Répondre s'il vous plait"}
+    }
+  },
+  auto: 'placeholders'
 };
 
 export default class RudderInspectScreen extends React.Component {
@@ -30,13 +35,6 @@ export default class RudderInspectScreen extends React.Component {
     super(props);
 
     this.onPress = this.onPress.bind(this);
-    // var value = await this.loadStoredData()
-    // console.log('this is what we are setting');
-    // console.log(value);
-    // this.state = {
-    //   value: value //{ checked: "recently",
-    //            //installed: "long ago" }
-    // };
   }
 
   state = {
@@ -93,7 +91,12 @@ export default class RudderInspectScreen extends React.Component {
       return <View><Text>Loading...</Text></View>;
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+         <Text>Inspection visuelle du gouvernail. Rechercher une déformation ou des Contrôle le jeu de la mèche dans l’axe.</Text>
+         <Text>Inspection visuelle des paliers.</Text>
+         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
           type={RudderInspect}
@@ -102,9 +105,9 @@ export default class RudderInspectScreen extends React.Component {
           options={options}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -120,8 +123,6 @@ export default class RudderInspectScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
