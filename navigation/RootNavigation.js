@@ -3,6 +3,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
+import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
 import TestVHFScreen from './../screens/TestVHFScreen';
 import LifeJacketsScreen from './../screens/LifeJacketsScreen';
@@ -26,6 +27,9 @@ const RootStackNavigator = StackNavigator(
     },
     Entretien: {
       screen: MainTabNavigator,
+    },
+    Navigation: {
+      screen: NavigationTabNav,
     },
     TestVHF: {
       screen: TestVHFScreen,

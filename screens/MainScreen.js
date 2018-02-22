@@ -26,7 +26,7 @@ export default class MainScreen extends React.Component {
       <View style={styles.container}>
       <Svg width="500" height="900">
         <G x="10" y="50">
-        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+        <G x="0" y="0" onPress={() => navigate('Navigation', {})}>
           <G x="295"
              y="50">
             <Circle
