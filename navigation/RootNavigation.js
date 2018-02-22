@@ -17,6 +17,7 @@ import InspectHullScreen from './../screens/InspectHullScreen';
 import InspectEngineScreen from './../screens/InspectEngineScreen';
 import InspectKeelScreen from './../screens/InspectKeelScreen';
 import InspectRudderScreen from './../screens/InspectRudderScreen';
+import InspectClutchScreen from './../screens/InspectClutchScreen';
 
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
@@ -60,6 +61,9 @@ const RootStackNavigator = StackNavigator(
     },
     InspectRudder: {
       screen: InspectRudderScreen,
+    },
+    InspectClutch: {
+      screen: InspectClutchScreen,
     },
     InspectEngine: {
       screen: InspectEngineScreen,
