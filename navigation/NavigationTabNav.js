@@ -31,21 +31,21 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Security':
+          case 'Accoster':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-shirt${focused ? '' : '-outline'}`
-                : 'md-shirt';
+                ? `ios-checkbox${focused ? '' : '-outline'}`
+                : 'md-checkbox-outline';
             break;
-          case 'Mechanical':
-            iconName = Platform.OS === 'ios' ? `ios-build${focused ? '' : '-outline'}` : 'md-build';
+          case 'Mettre_a_leau':
+            iconName = Platform.OS === 'ios' ? `ios-boat${focused ? '' : '-outline'}` : 'md-boat';
             break;
-          case 'Electrical':
-            iconName = Platform.OS === 'ios' ? `ios-flash${focused ? '' : '-outline'}` : 'md-flash';
+          case 'Preparer_la_sortie':
+            iconName = Platform.OS === 'ios' ? `ios-speedometer${focused ? '' : '-outline'}` : 'md-speedometer';
             break;
-          case 'HullAndRigging':
+          case 'Reussir_sa_sortie':
             iconName =
-              Platform.OS === 'ios' ? `ios-boat${focused ? '' : '-outline'}` : 'md-boat';
+              Platform.OS === 'ios' ? `ios-navigate${focused ? '' : '-outline'}` : 'md-navigate';
         }
         return (
           <Ionicons
