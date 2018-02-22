@@ -21,6 +21,9 @@ export default class MainScreen extends React.Component {
     const arc3 = describeArc(150, 150, 100, 180, 270);
     const arc4 = describeArc(150, 150, 100, 270, 360);
 
+    const arc5 = describeArc(150, 150, 50, 180, 360);
+    const arc6 = describeArc(150, 150, 50, 0, 180);
+
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
@@ -33,8 +36,7 @@ export default class MainScreen extends React.Component {
               cx="0"
               cy="0"
               r="90"
-              opacity="0"
-              fill="green"/> 
+              fill="rgba(250, 250, 250, 0)"/> 
             <Text
                 rotation="45"
                 textAnchor="middle"
@@ -53,7 +55,8 @@ export default class MainScreen extends React.Component {
             />
         </G> 
 
-        <Path 
+        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+          <Path 
             x="30"
             y="50"        
             fill="none" 
@@ -62,59 +65,105 @@ export default class MainScreen extends React.Component {
             d={arc2} 
             onPress={() => navigate('Entretien', {})}
           />
-        <G x="270"
-           y="300">
-        <Text
-            rotation="315"
-            textAnchor="middle"
-            fontWeight="bold"
-            fontSize="24"
-            fill="#20BBD8"
-            onPress={() => navigate('Entretien', {})}
-        >Assistance</Text>  
+          <G x="270" y="300">
+            <Circle
+              cx="20"
+              cy="20"
+              r="90"
+              fill="rgba(250, 250, 250,0)"/> 
+            <Text
+                rotation="315"
+                textAnchor="middle"
+                fontWeight="bold"
+                fontSize="24"
+                fill="#20BBD8"
+            >Assistance</Text>  
+          </G>         
         </G>         
 
-        <Path 
-            x="0"
-            y="50"
-            fill="none" 
-            stroke="#FD7923" 
-            strokeWidth="50" 
-            d={arc3} 
-            onPress={() => navigate('Entretien', {})}
-          />
-        <G x="50"
-           y="300">
-        <Text
-            rotation="45" 
-            textAnchor="middle"
-            fontWeight="bold"
-            fontSize="24"
-            fill="#20BBD8"
-            onPress={() => navigate('Entretien', {})}
-        >Entretien</Text>           
+        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+          <Path 
+              x="0"
+              y="50"
+              fill="none" 
+              stroke="#FD7923" 
+              strokeWidth="50" 
+              d={arc3} 
+            />
+            
+          <G x="50"
+             y="300">
+            <Circle
+                cx="-15"
+                cy="15"
+                r="90"
+                fill="rgba(250, 250, 250, 0)"/>    
+            <Text
+                rotation="45" 
+                textAnchor="middle"
+                fontWeight="bold"
+                fontSize="24"
+                fill="#20BBD8"
+            >Entretien</Text>           
+          </G>
         </G>
 
-        <Path
-            x="0"
-            y="10" 
-            fill="none" 
-            stroke="#FD7923" 
-            strokeWidth="50" 
-            d={arc4} 
-            onPress={() => navigate('Entretien', {})}
-          />
-        <G  x="40"
-            y="40">  
-        <Text
-            rotation="315"
-            textAnchor="middle"
-            fontWeight="bold"
-            fontSize="24"
-            fill="#20BBD8" 
-            onPress={() => navigate('Entretien', {})}
-        >Détente</Text>  
+        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+          <Path
+              x="0"
+              y="10" 
+              fill="none" 
+              stroke="#FD7923" 
+              strokeWidth="50" 
+              d={arc4} 
+              onPress={() => navigate('Entretien', {})}
+            />
+          <G x="40" y="40"> 
+            <Circle
+              cx="0"
+              cy="0"
+              r="90"
+              fill="rgba(250, 250, 250, 0)"/>  
+            <Text
+                rotation="315"
+                textAnchor="middle"
+                fontWeight="bold"
+                fontSize="24"
+                fill="#20BBD8" 
+                onPress={() => navigate('Entretien', {})}
+            >Détente</Text>  
+          </G>
         </G>
+          <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
+          <Image
+            x="0"
+            y="50"
+            height="64"
+            width="64"
+            preserveAspectRatio="xMidYMid"
+            href={require("../assets/images/boating_transparent_64.png")}
+          />
+          <Path
+              x="0"
+              y="0" 
+              fill="#A8C4DA" 
+              stroke="#A8C4DA" 
+              strokeWidth="50" 
+              d={arc5} 
+            />
+
+         </G>
+         <G x="25" y="33" onPress={() => navigate('Checklists', {})}>
+         <Path
+              x="0"
+              y="0" 
+              fill="#A8C4DA" 
+              stroke="#A8C4DA" 
+              strokeWidth="50" 
+              d={arc6} 
+            />
+         </G>
+
         </G>
 
         </Svg>
