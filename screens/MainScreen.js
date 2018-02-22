@@ -134,25 +134,7 @@ export default class MainScreen extends React.Component {
             >Détente</Text>  
           </G>
         </G>
-          <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
-          <Image
-            x="0"
-            y="50"
-            height="64"
-            width="64"
-            preserveAspectRatio="xMidYMid"
-            href={require("../assets/images/boating_transparent_64.png")}
-          />
-          <Path
-              x="0"
-              y="0" 
-              fill="#A8C4DA" 
-              stroke="#A8C4DA" 
-              strokeWidth="50" 
-              d={arc5} 
-            />
 
-         </G>
          <G x="25" y="33" onPress={() => navigate('Checklists', {})}>
          <Path
               x="0"
@@ -164,6 +146,26 @@ export default class MainScreen extends React.Component {
             />
          </G>
 
+          <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
+          <Path
+              x="0"
+              y="0" 
+              fill="#A8C4DA" 
+              stroke="#A8C4DA" 
+              strokeWidth="50" 
+              d={arc5} 
+            />
+          <Image
+            x="50"
+            y="150"
+            height="128"
+            width="128"
+            preserveAspectRatio="xMidYMid slice"
+            href={require("../assets/images/boating_transparent.png")}
+          />
+
+
+         </G>
         </G>
 
         </Svg>

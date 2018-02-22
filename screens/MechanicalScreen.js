@@ -161,7 +161,7 @@ export default class MechanicalScreen extends React.Component {
                   fill="blue"
               >Essai du Moteur</Text>
             </G>
-
+          }
 
 
         </Svg>
