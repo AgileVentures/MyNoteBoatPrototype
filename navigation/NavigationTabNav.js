@@ -7,22 +7,22 @@ import Colors from '../constants/Colors';
 
 import Preparer_la_sortie from '../screens/Preparer_la_sortieScreen';
 import Mettre_a_leau from '../screens/Mettre_a_leauScreen';
-import Preparer_le_bateau from '../screens/Preparer_le_bateauScreen';
+import Reussir_sa_sortie from '../screens/Reussir_sa_sortie';
 import Accoster from '../screens/AccosterScreen';
 
 export default TabNavigator(
   {
-    Preparer_la_sortie: {
-      screen: Preparer_la_sortie,
+    Accoster: {
+      screen: Accoster,
     },
     Mettre_a_leau: {
       screen: Mettre_a_leau,
     },
-    Preparer_le_bateau: {
-      screen: Preparer_le_bateau,
+    Preparer_la_sortie: {
+      screen: Preparer_la_sortie,
     },
-    Accoster: {
-      screen: Accoster,
+    Reussir_sa_sortie: {
+      screen: Reussir_sa_sortie,
     },
   },
   {

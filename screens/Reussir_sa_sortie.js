@@ -1,11 +1,11 @@
 import React, {  Component  } from 'react';
-import { StyleSheet, ScrollView, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { Alert, Image, StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import CheckBox from 'react-native-check-box';
 
-export default class Preparer_le_bateauScreen extends Component {
+export default class Reussir_sa_sortie extends Component {
     static navigationOptions = {
-      title: 'Preparer_le_bateau',
+      title: 'Réussir sa sortie',
     };
 
     constructor () {
@@ -35,13 +35,17 @@ export default class Preparer_le_bateauScreen extends Component {
                         </TouchableOpacity>}
                 />
                 <ScrollView>
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>respecter</Text>
+                    <View style={styles.line}/>
+
                     {[
-                    <View key={0}style={styles.item}>
+                    <View key={0} style={styles.item}>
                         <CheckBox
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"Relever le moteur"}
+                            leftText={"les privilèges "}
                         />
                     </View>, 
                     <View key={1}style={styles.item}>
@@ -49,7 +53,7 @@ export default class Preparer_le_bateauScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"Mettre le(s) nâbles(s)"}
+                            leftText={"les vitesses"}
                         />
                     </View>,
                     <View key={2} style={styles.item}>
@@ -57,7 +61,36 @@ export default class Preparer_le_bateauScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"2 aussières à poste"}
+                            leftText={"les zones de navigation"}
+                        />
+                    </View>
+                    ]}
+                    <View style={styles.line}/>
+                    <Text style={styles.heading}>confort de la navigation</Text>
+                    <View style={styles.line}/>
+                    {[
+                    <View key={0} style={styles.item}>
+                        <CheckBox
+                            style={{ flex: 1, padding: 10 }}
+                            onClick={() => this.setState({ checked: !this.state.checked })}
+                            isChecked={this.state.checked}
+                            leftText={"emporter eau et nourriture"}
+                        />
+                    </View>,
+                    <View key={1} style={styles.item}>
+                        <CheckBox
+                            style={{ flex: 1, padding: 10 }}
+                            onClick={() => this.setState({ checked: !this.state.checked })}
+                            isChecked={this.state.checked}
+                            leftText={"emporter d’autres vêtements"}
+                        />
+                    </View>,                    
+                    <View key={2} style={styles.item}>
+                        <CheckBox
+                            style={{ flex: 1, padding: 10 }}
+                            onClick={() => this.setState({ checked: !this.state.checked })}
+                            isChecked={this.state.checked}
+                            leftText={"prévenir de votre départ"}
                         />
                     </View>,
                     <View key={3} style={styles.item}>
@@ -65,27 +98,11 @@ export default class Preparer_le_bateauScreen extends Component {
                             style={{ flex: 1, padding: 10 }}
                             onClick={() => this.setState({ checked: !this.state.checked })}
                             isChecked={this.state.checked}
-                            leftText={"passer la marche arrière"}
-                        />
-                    </View>,
-                    <View key={4} style={styles.item}>
-                        <CheckBox
-                            style={{ flex: 1, padding: 10 }}
-                            onClick={() => this.setState({ checked: !this.state.checked })}
-                            isChecked={this.state.checked}
-                            leftText={"larguer la sangle de hissage"}
-                        />
-                    </View>,
-                    <View key={5} style={styles.item}>
-                        <CheckBox
-                            style={{ flex: 1, padding: 10 }}
-                            onClick={() => this.setState({ checked: !this.state.checked })}
-                            isChecked={this.state.checked}
-                            leftText={"filer avec les aussières"}
+                            leftText={"écourter la sortie si nécessaire"}
                         />
                     </View>
-
                     ]}
+
                 </ScrollView>
             </View>
 
@@ -99,14 +116,20 @@ export default class Preparer_le_bateauScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#48BBEC'
+        backgroundColor: 'white'
     },
     item: {
         flexDirection: 'row',
     },
     line: {
         flex: 1,
-        height: 0.3,
-        backgroundColor: 'darkgray',
+        height: 0.9,
+        backgroundColor: 'navy',
     },
+    heading: {
+        fontWeight: "bold",
+        textShadowRadius: 25,
+        textShadowColor: "navy"
+
+    }
 })
