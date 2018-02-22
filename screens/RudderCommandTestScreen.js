@@ -1,11 +1,11 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
-var LifeJackets = t.struct({
+var RudderCommandTest = t.struct({
   installed: t.String,              // a required string
   checked: t.String,               // a required string
   cost: t.maybe(t.String)     // an optional string
@@ -21,9 +21,9 @@ const options = {
   // }
 };
 
-export default class LifeJacketsScreen extends React.Component {
+export default class RudderCommandTestScreen extends React.Component {
   static navigationOptions = {
-    title: 'Inspection des brassières',
+    title: 'Essai de la commande de barre',
   };
 
   constructor (props) {
@@ -44,7 +44,7 @@ export default class LifeJacketsScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:LifeJackets').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:RudderCommandTest').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -56,7 +56,7 @@ export default class LifeJacketsScreen extends React.Component {
   async loadStoredData() {
     var value = "{}"
     try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:LifeJackets');
+      value = await AsyncStorage.getItem('@MyNoteBoatStore:RudderCommandTest');
       if (value !== null){
         console.log("loaded some data");
         console.log(value);
@@ -76,7 +76,7 @@ export default class LifeJacketsScreen extends React.Component {
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:LifeJackets', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:RudderCommandTest', JSON.stringify(value));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
@@ -93,10 +93,17 @@ export default class LifeJacketsScreen extends React.Component {
       return <View><Text>Loading...</Text></View>;
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+        <Text>Inspection visuelle de l’ensemble. </Text>
+        <Text>S’assurer qu’il n’y a pas de jeu excessif entre les pièces mobiles.</Text>
+        <Text>S’assurer qu’il n’y a pas de fuite si la commande est hydraulique. </Text>
+        <Text>Essaye la barre sur les deux bords, s’assurer que le transmission est douce</Text>
+        <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text>Avant chaque sortie</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
-          type={LifeJackets}
+          type={RudderCommandTest}
           value={this.state.value}
           // onChange={this.onChange}
           options={options}
@@ -104,7 +111,7 @@ export default class LifeJacketsScreen extends React.Component {
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
           <Text style={styles.buttonText}>Save</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -120,8 +127,6 @@ export default class LifeJacketsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
