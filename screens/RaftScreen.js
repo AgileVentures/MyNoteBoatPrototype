@@ -133,9 +133,8 @@ export default class RaftScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     // justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff'
   },
   title: {
     fontSize: 30,
