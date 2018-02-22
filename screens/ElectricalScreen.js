@@ -22,6 +22,9 @@ export default class ElectricalScreen extends React.Component {
       this.state = {
           showInspectBattery: false
       };
+      this.state = {
+          showTestNavLights: false
+      };
   }
 
   toggleInspectBattery = () => {
