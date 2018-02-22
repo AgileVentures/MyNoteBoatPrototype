@@ -5,24 +5,24 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import SecurityScreen from '../screens/SecurityScreen';
-import MechanicalScreen from '../screens/MechanicalScreen';
-import HullAndRiggingScreen from '../screens/HullAndRiggingScreen';
-import ElectricalScreen from '../screens/ElectricalScreen';
+import Preparer_la_sortie from '../screens/Preparer_la_sortieScreen';
+import Mettre_a_leau from '../screens/Mettre_a_leauScreen';
+import Preparer_le_bateau from '../screens/Preparer_le_bateauScreen';
+import Accoster from '../screens/AccosterScreen';
 
 export default TabNavigator(
   {
-    Security: {
-      screen: SecurityScreen,
+    Preparer_la_sortie: {
+      screen: Preparer_la_sortie,
     },
-    Mechanical: {
-      screen: MechanicalScreen,
+    Mettre_a_leau: {
+      screen: Mettre_a_leau,
     },
-    Electrical: {
-      screen: ElectricalScreen,
+    Preparer_le_bateau: {
+      screen: Preparer_le_bateau,
     },
-    HullAndRigging: {
-      screen: HullAndRiggingScreen,
+    Accoster: {
+      screen: Accoster,
     },
   },
   {
@@ -34,11 +34,11 @@ export default TabNavigator(
           case 'Security':
             iconName =
               Platform.OS === 'ios'
-                ? `ios-help-buoy${focused ? '' : '-outline'}`
-                : 'md-help-buoy';
+                ? `ios-shirt${focused ? '' : '-outline'}`
+                : 'md-shirt';
             break;
           case 'Mechanical':
-            iconName = Platform.OS === 'ios' ? `ios-construct${focused ? '' : '-outline'}` : 'md-construct';
+            iconName = Platform.OS === 'ios' ? `ios-build${focused ? '' : '-outline'}` : 'md-build';
             break;
           case 'Electrical':
             iconName = Platform.OS === 'ios' ? `ios-flash${focused ? '' : '-outline'}` : 'md-flash';
@@ -59,7 +59,7 @@ export default TabNavigator(
     }),
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    animationEnabled: false,
+    animationEnabled: true,
     swipeEnabled: false,
   }
 );

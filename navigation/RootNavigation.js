@@ -3,6 +3,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
+import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
 import TestVHFScreen from './../screens/TestVHFScreen';
 import LifeJacketsScreen from './../screens/LifeJacketsScreen';
@@ -16,6 +17,7 @@ import InspectHullScreen from './../screens/InspectHullScreen';
 import EngineTestScreen from './../screens/EngineTestScreen';
 import InspectKeelScreen from './../screens/InspectKeelScreen';
 import InspectRudderScreen from './../screens/InspectRudderScreen';
+import InspectClutchScreen from './../screens/InspectClutchScreen';
 
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
@@ -26,6 +28,9 @@ const RootStackNavigator = StackNavigator(
     },
     Entretien: {
       screen: MainTabNavigator,
+    },
+    Navigation: {
+      screen: NavigationTabNav,
     },
     TestVHF: {
       screen: TestVHFScreen,
@@ -59,6 +64,9 @@ const RootStackNavigator = StackNavigator(
     },
     EngineTest: {
       screen: EngineTestScreen,
+    InspectClutch: {
+      screen: InspectClutchScreen,
+    },
     },
   },
   {
