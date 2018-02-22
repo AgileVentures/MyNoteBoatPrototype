@@ -5,6 +5,15 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import MainScreen from './../screens/MainScreen';
 import TestVHFScreen from './../screens/TestVHFScreen';
+import LifeJacketsScreen from './../screens/LifeJacketsScreen';
+import RaftScreen from './../screens/RaftScreen';
+import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
+import RudderInspectScreen from './../screens/RudderInspectScreen';
+import InspectBatteryScreen from './../screens/InspectBatteryScreen';
+import TestNavLightsScreen from './../screens/TestNavLightsScreen';
+import InspectHullScreen from './../screens/InspectHullScreen';
+import InspectKeelScreen from './../screens/InspectKeelScreen';
+import InspectRudderScreen from './../screens/InspectRudderScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 const RootStackNavigator = StackNavigator(
@@ -17,6 +26,33 @@ const RootStackNavigator = StackNavigator(
     },
     TestVHF: {
       screen: TestVHFScreen,
+    },
+    LifeJackets: {
+      screen: LifeJacketsScreen,
+    },
+    Raft: {
+      screen: RaftScreen,
+    },
+    LifeRaftControl: {
+      screen: LifeRaftControlScreen,
+    },
+    RudderInspect: {
+      screen: RudderInspectScreen,
+    },
+    InspectBattery: {
+      screen: InspectBatteryScreen,
+    },
+    TestNavLights: {
+      screen: TestNavLightsScreen,
+    },
+    InspectHull: {
+      screen: InspectHullScreen,
+    },
+    InspectKeel: {
+      screen: InspectKeelScreen,
+    },
+    InspectRudder: {
+      screen: InspectRudderScreen,
     },
   },
   {
