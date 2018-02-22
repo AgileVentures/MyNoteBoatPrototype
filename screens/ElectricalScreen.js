@@ -21,11 +21,26 @@ export default class ElectricalScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showInspectBattery: false
+          showInspectBattery: false,
+          showTestNavLights: false,
+          isLoading: true
       };
-      this.state = {
-          showTestNavLights: false
-      };
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem('@MyNoteBoatStore:InspectBattery:editable').then((value) => {
+      if (value === null){ value = '{ "Condition": "red" }' }
+      this.setState({
+        InspectBatteryColour: JSON.parse(value).Condition
+      });
+      AsyncStorage.getItem('@MyNoteBoatStore:TestNavLights:editable').then((value) => {
+        if (value === null){ value = '{ "Condition": "red" }' }
+        this.setState({
+          isLoading: false,
+          TestNavLightsColour: JSON.parse(value).Condition
+        });
+      });
+    });
   }
 
   toggleInspectBattery = () => {
@@ -36,17 +51,20 @@ export default class ElectricalScreen extends React.Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <View><NativeText>Loading...</NativeText></View>;
+    }
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
       <NavigationBar
         tintColor="#1C87B2"
-        title={<NativeImage 
+        title={<NativeImage
                  source={require('../assets/images/mynoteboat.png')}
                 />
               }
         leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
-                <NativeImage 
+                <NativeImage
                  source={require('../assets/images/splash-64.png')}
                 />
               </TouchableOpacity>}
@@ -67,7 +85,7 @@ export default class ElectricalScreen extends React.Component {
             cx="150"
             cy="300"
             r="10"
-            fill="red"
+            fill={this.state.InspectBatteryColour}
             onPress={this.toggleInspectBattery}
           />
           { this.state.showInspectBattery &&
@@ -90,7 +108,7 @@ export default class ElectricalScreen extends React.Component {
             cx="290"
             cy="370"
             r="10"
-            fill="green"
+            fill={this.state.TestNavLightsColour}
             onPress={this.toggleTestNavLights}
           />
           { this.state.showTestNavLights &&
