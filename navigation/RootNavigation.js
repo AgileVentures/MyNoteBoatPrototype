@@ -7,7 +7,7 @@ import NavigationTabNav from './NavigationTabNav';
 import MainScreen from './../screens/MainScreen';
 import WindlassTestScreen from './../screens/WindlassTestScreen';
 import RudderCommandTestScreen from './../screens/RudderCommandTestScreen';
-// import RaftScreen from './../screens/RaftScreen';
+import ClutchTestScreen from './../screens/ClutchTestScreen';
 
 import LifeRaftControlScreen from './../screens/LifeRaftControlScreen';
 import LifeRingControlScreen from './../screens/LifeRingControlScreen';
@@ -68,6 +68,9 @@ const RootStackNavigator = StackNavigator(
     },
     RudderCommandTest: {
       screen: RudderCommandTestScreen,
+    },
+    ClutchTest: {
+      screen: ClutchTestScreen,
     },
   },
   {
