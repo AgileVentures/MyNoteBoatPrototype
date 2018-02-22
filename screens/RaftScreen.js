@@ -13,7 +13,7 @@ var Conditions = t.enums({
 
 var Raft = t.struct({
   Condition: Conditions,              // a required enum
-  Commentary: t.String,               // a required string
+  Commentary: t.maybe(t.String),               // a required string
   Price: t.maybe(t.String)     // an optional string
 });
 
