@@ -5,20 +5,25 @@ var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
+var Conditions = t.enums({
+  green: 'Tres Bon Etat',
+  orange: 'Correc I',
+  red: 'Defecteux'
+});
+
 var WindlassTest = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
-  cost: t.maybe(t.String)     // an optional string
+  Condition: Conditions,              // a required enum
+  Commentary: t.maybe(t.String),               // a required string
+  Price: t.maybe(t.String)     // an optional string
 });
 
 const options = {
-  // fields: {
-  //   installed: {
-  //     config: {
-  //       format: date => format(date, "DD-MM-YYYY")
-  //     }
-  //   }
-  // }
+  fields: {
+    Condition: {
+      nullOption: {value: '', text: "Répondre s'il vous plait"}
+    }
+  },
+  auto: 'placeholders'
 };
 
 export default class WindlassTestScreen extends React.Component {
@@ -44,7 +49,7 @@ export default class WindlassTestScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -53,40 +58,22 @@ export default class WindlassTestScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:WindlassTest');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:WindlassTest:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('Mechanical', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
