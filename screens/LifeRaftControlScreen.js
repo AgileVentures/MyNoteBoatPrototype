@@ -6,8 +6,8 @@ var t = require('tcomb-form-native');
 var Form = t.form.Form;
 
 var LifeRaftControl = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
+  LastControl: t.String,              // a required string
+  Fréquence: t.String,               // a required string
   cost: t.maybe(t.String)     // an optional string
 });
 

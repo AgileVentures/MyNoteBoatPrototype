@@ -1,14 +1,20 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { AsyncStorage, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
+var Conditions = t.enums({
+  T: 'Tres Bon Etat',
+  C: 'Correc I',
+  D: 'Defecteux'
+});
+
 var Raft = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
-  cost: t.maybe(t.String)     // an optional string
+  Condition: Conditions,              // a required enum
+  Commentary: t.String,               // a required string
+  Price: t.maybe(t.String)     // an optional string
 });
 
 const options = {
@@ -93,7 +99,13 @@ export default class RaftScreen extends React.Component {
       return <View><Text>Loading...</Text></View>;
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+         <Text>Inspection du visuel de la coquille du radeau et du bout de déclenchement de la bouteille.</Text>
+         <Text>Vérification de la fin de validité de l’inspection.</Text>
+         <Text>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
+         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toDateString()}</Text>
          <Form
           ref="form"
           type={Raft}
@@ -102,9 +114,9 @@ export default class RaftScreen extends React.Component {
           options={options}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -120,7 +132,7 @@ export default class RaftScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    // justifyContent: 'center',
     marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
