@@ -88,18 +88,18 @@ export default class LifeRaftControlScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Contrôl du radeau</Text>
          <Text style={styles.itemText}>Inspection du visuel de la coquille du radeau et du bout de déclenchement de la bouteille.</Text>
          <Text style={styles.itemText}>Vérification de la fin de validité de l’inspection. </Text>
          <Text style={styles.itemText}>Contrôle du bon saisissage de l’ensemble sur son berceau.</Text>
          <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"

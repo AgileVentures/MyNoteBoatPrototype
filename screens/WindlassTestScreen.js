@@ -95,19 +95,19 @@ export default class WindlassTestScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Essai du Guindeau</Text>
         <Text style={styles.itemText}>Inspection visuelle du guideau. </Text>
         <Text style={styles.itemText}>Inspection visuelle de la commande du guideau et du système de secours.</Text>
         <Text style={styles.itemText}>Essai de guideau. Dévirer et virer l’ancre.</Text>
         <Text style={styles.itemText}>Contrôle du système de saisissage de l’ancre.</Text>
         <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            <View style={styles.lineItem}>
            </View>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"

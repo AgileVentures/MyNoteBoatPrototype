@@ -88,19 +88,19 @@ export default class LifeRingControlScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Contrôl de la Bouée Couronne</Text>
          <Text style={styles.itemText}>Inspection visuelle de la bouée couronne.</Text>
          <Text style={styles.itemText}>Essai du feu à retournement.</Text>
          <Text style={styles.itemText}>Contrôle du marquage (Nom et port du bateau)</Text>
          <Text style={styles.itemText}>Contrôle des bandes réfléchissantes</Text>
          <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"

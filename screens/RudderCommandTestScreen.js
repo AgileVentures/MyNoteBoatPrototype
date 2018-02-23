@@ -95,19 +95,19 @@ export default class RudderCommandTestScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Essai de la commande de barre</Text>
         <Text style={styles.itemText}>Inspection visuelle de l’ensemble. </Text>
         <Text style={styles.itemText}>S’assurer qu’il n’y a pas de jeu excessif entre les pièces mobiles.</Text>
         <Text style={styles.itemText}>S’assurer qu’il n’y a pas de fuite si la commande est hydraulique. </Text>
         <Text style={styles.itemText}>Essaye la barre sur les deux bords, s’assurer que le transmission est douce</Text>
         <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"

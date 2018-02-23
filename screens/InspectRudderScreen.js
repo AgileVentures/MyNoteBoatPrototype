@@ -88,18 +88,18 @@ export default class InspectRudderScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Inspection du gouvernail</Text>
          <Text style={styles.itemText}>Inspection visuelle du gouvernail.</Text>
          <Text style={styles.itemText}>Rechercher une déformation ou des Contrôle le jeu de la mèche dans l’axe.</Text>
          <Text style={styles.itemText}>Inspection visuelle des paliers.</Text>
          <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"

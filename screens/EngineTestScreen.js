@@ -92,7 +92,7 @@ export default class EngineTestScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Essai du moteur</Text>
          <Text style={styles.itemText}>Contrôle du bon démarrage du moteur.</Text>
          <Text style={styles.itemText}>Contrôle du débit et de la température de la réfrigération du moteur.</Text>
          <Text style={styles.itemText}>Contrôle de la température de l’huile - la cas échéant.</Text>

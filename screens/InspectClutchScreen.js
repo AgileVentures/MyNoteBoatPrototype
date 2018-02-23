@@ -107,18 +107,18 @@ export default class InspectClutchScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Inspection de la batterie</Text>
+      <Text style={styles.heading}>Essai de l’embrayage</Text>
          <Text style={styles.itemText}>Contrôle du bon fonctionnement de l’embrayage en avant et en arrière.</Text>
          <Text style={styles.itemText}>Contrôler la rotation de l’hélice.</Text>
          <Text style={styles.itemText}>S’assurer particulièrement de l’absence de point dure sur la commande.</Text>
          <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
            </View>
         <Form
           ref="form"
