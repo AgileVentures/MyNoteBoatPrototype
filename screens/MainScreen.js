@@ -177,11 +177,30 @@ export default class MainScreen extends React.Component {
               strokeWidth="50" 
               d={arc5} 
             />
-          <NativeImage
-            source={require("../assets/images/boating_transparent.png")}
-          />
-
-
+            <Text
+              x="113"
+              y="140"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >BOAT</Text>
+            <Text
+              x="206"
+              y="130"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >CHECK</Text>
+            <Text
+              x="205"
+              y="150"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >LISTS</Text>
          </G>
         </G>
 
