@@ -1,24 +1,29 @@
 import React from 'react';
-import { AsyncStorage, Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { AsyncStorage, Image, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 var t = require('tcomb-form-native');
 
 var Form = t.form.Form;
 
+var Conditions = t.enums({
+  green: 'Tres Bon Etat',
+  orange: 'Correc I',
+  red: 'Defecteux'
+});
+
 var InspectHull = t.struct({
-  installed: t.String,              // a required string
-  checked: t.String,               // a required string
-  cost: t.maybe(t.String)     // an optional string
+  Condition: Conditions,              // a required enum
+  Commentary: t.maybe(t.String),               // a required string
+  Price: t.maybe(t.String)     // an optional string
 });
 
 const options = {
-  // fields: {
-  //   installed: {
-  //     config: {
-  //       format: date => format(date, "DD-MM-YYYY")
-  //     }
-  //   }
-  // }
+  fields: {
+    Condition: {
+      nullOption: {value: '', text: "Répondre s'il vous plait"}
+    }
+  },
+  auto: 'placeholders'
 };
 
 export default class InspectHullScreen extends React.Component {
@@ -30,13 +35,6 @@ export default class InspectHullScreen extends React.Component {
     super(props);
 
     this.onPress = this.onPress.bind(this);
-    // var value = await this.loadStoredData()
-    // console.log('this is what we are setting');
-    // console.log(value);
-    // this.state = {
-    //   value: value //{ checked: "recently",
-    //            //installed: "long ago" }
-    // };
   }
 
   state = {
@@ -44,7 +42,7 @@ export default class InspectHullScreen extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('@MyNoteBoatStore:InspectHull').then((value) => {
+    AsyncStorage.getItem('@MyNoteBoatStore:InspectHull:editable').then((value) => {
       if (value === null){ value = "{}" }
       this.setState({
         isLoading: false,
@@ -53,40 +51,22 @@ export default class InspectHullScreen extends React.Component {
     });
   }
 
-  async loadStoredData() {
-    var value = "{}"
-    try {
-      value = await AsyncStorage.getItem('@MyNoteBoatStore:InspectHull');
-      if (value !== null){
-        console.log("loaded some data");
-        console.log(value);
-      }
-    } catch (error) {
-      value = "{}"
-      console.log("could not retrieve data")
-      console.log(error)
-    }
-    return JSON.parse(value);
-  }
-
   async onPress() {
-    // call getValue() to get the values of the form
+    const { navigate } = this.props.navigation;
     var value = this.refs.form.getValue();
     if (value) { // if validation fails, value will be null
       console.log("received form input");
       console.log(value); // value here is an instance of Person
       try {
-        await AsyncStorage.setItem('@MyNoteBoatStore:InspectHull', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:InspectHull:editable', JSON.stringify(value));
+        await AsyncStorage.setItem('@MyNoteBoatStore:InspectHull:fixed', new Date().toLocaleDateString('fr-FR'));
       } catch (error) {
         console.log("could not save data")
         console.log(error)
       }
+      navigate('HullAndRigging', {})
     }
   };
-
-  // onChange(value) {
-  //   this.setState({value});
-  // }
 
   render() {
     if (this.state.isLoading) {
@@ -97,16 +77,24 @@ export default class InspectHullScreen extends React.Component {
       <View>
         <NavigationBar
           tintColor="#1C87B2"
-          title={<Image 
+          title={<Image
                    source={require('../assets/images/mynoteboat.png')}
                   />
                 }
           leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
-                  <Image 
+                  <Image
                    source={require('../assets/images/splash-64.png')}
                   />
                 </TouchableOpacity>}
         />
+      <ScrollView style={styles.container}>
+         <Text>Inspection visuelle de la coque.</Text>
+         <Text>Rechercher toute déformation.</Text>
+         <Text>Inspecter l’usure des anodes.</Text>
+         <Text>Inspecter les passe-coque</Text>
+         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
+         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
+         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
          <Form
           ref="form"
           type={InspectHull}
@@ -115,8 +103,9 @@ export default class InspectHullScreen extends React.Component {
           options={options}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
+      </ScrollView>
       </View>
     );
   }
@@ -133,8 +122,6 @@ export default class InspectHullScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
     backgroundColor: '#ffffff',
   },
