@@ -102,8 +102,8 @@ export default class WindlassTestScreen extends React.Component {
         <Text style={styles.itemText}>Contrôle du système de saisissage de l’ancre.</Text>
         <View style={styles.lineItem}>
            <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
-           <View style={styles.lineItem}>
            </View>
+           <View style={styles.lineItem}>
            <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
            </View>
            <View style={styles.lineItem}>
