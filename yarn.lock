@@ -4459,6 +4459,10 @@ react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
 
+react-native-responsive-image@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-image/-/react-native-responsive-image-2.2.1.tgz#76eb6c8fffef46e1b8f87edcff2bb3e1b234048d"
+
 react-native-safe-area-view@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.6.0.tgz#ce01eb27905a77780219537e0f53fe9c783a8b3d"

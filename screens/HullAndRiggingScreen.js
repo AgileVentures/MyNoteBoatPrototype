@@ -22,14 +22,34 @@ export default class HullAndRiggingScreen extends React.Component {
   constructor () {
       super(...arguments);
       this.state = {
-          showInspectRudder: false
+          showInspectRudder: false,
+          showInspectHull: false,
+          showInspectKeel: false,
+          isLoading: true
       };
-      this.state = {
-          showInspectHull: false
-      };
-      this.state = {
-          showInspectKeel: false
-      };
+  }
+
+    componentDidMount() {
+    AsyncStorage.getItem('@MyNoteBoatStore:InspectRudder:editable').then((value) => {
+      if (value === null){ value = '{ "Condition": "red" }' }
+      this.setState({
+        InspectRudderColour: JSON.parse(value).Condition
+      });
+      AsyncStorage.getItem('@MyNoteBoatStore:InspectHull:editable').then((value) => {
+        if (value === null){ value = '{ "Condition": "red" }' }
+        this.setState({
+          isLoading: false,
+          InspectHullColour: JSON.parse(value).Condition
+        });
+        AsyncStorage.getItem('@MyNoteBoatStore:InspectKeel:editable').then((value) => {
+          if (value === null){ value = '{ "Condition": "red" }' }
+          this.setState({
+            isLoading: false,
+            InspectKeelColour: JSON.parse(value).Condition
+          });
+        });
+      });
+    });
   }
 
   toggleInspectRudder = () => {
@@ -43,17 +63,20 @@ export default class HullAndRiggingScreen extends React.Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <View><NativeText>Loading...</NativeText></View>;
+    }
     const { navigate } = this.props.navigation;
     return (
       <View>
       <NavigationBar
         tintColor="#1C87B2"
-        title={<NativeImage 
+        title={<NativeImage
                  source={require('../assets/images/mynoteboat.png')}
                 />
               }
         leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
-                <NativeImage 
+                <NativeImage
                  source={require('../assets/images/splash-64.png')}
                 />
               </TouchableOpacity>}
@@ -74,7 +97,7 @@ export default class HullAndRiggingScreen extends React.Component {
             cx="80"
             cy="320"
             r="10"
-            fill="orange"
+            fill={this.state.InspectRudderColour}
             onPress={this.toggleInspectRudder}
           />
           { this.state.showInspectRudder &&
@@ -97,7 +120,7 @@ export default class HullAndRiggingScreen extends React.Component {
             cx="130"
             cy="360"
             r="10"
-            fill="green"
+            fill={this.state.InspectHullColour}
             onPress={this.toggleInspectHull}
           />
           { this.state.showInspectHull &&
@@ -120,7 +143,7 @@ export default class HullAndRiggingScreen extends React.Component {
             cx="170"
             cy="400"
             r="10"
-            fill="green"
+            fill={this.state.InspectKeelColour}
             onPress={this.toggleInspectKeel}
           />
           { this.state.showInspectKeel &&

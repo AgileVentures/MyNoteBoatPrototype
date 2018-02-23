@@ -76,7 +76,7 @@ export default class MainScreen extends React.Component {
             />
         </G> 
 
-        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+        <G x="0" y="0" onPress={() => navigate('Assistance', {})}>
           <Path 
             x="30"
             y="50"        
@@ -84,7 +84,7 @@ export default class MainScreen extends React.Component {
             stroke="#FD7923" 
             strokeWidth="50" 
             d={arc2} 
-            onPress={() => navigate('Entretien', {})}
+            onPress={() => navigate('Assistance', {})}
           />
           <G x="270" y="300">
             <Circle
@@ -98,6 +98,7 @@ export default class MainScreen extends React.Component {
                 fontWeight="bold"
                 fontSize="24"
                 fill="#20BBD8"
+                onPress={() => navigate('Assistance', {})}
             >Assistance</Text>  
           </G>         
         </G>         
@@ -129,7 +130,7 @@ export default class MainScreen extends React.Component {
           </G>
         </G>
 
-        <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
+        <G x="0" y="0" onPress={() => navigate('Detente', {})}>
           <Path
               x="0"
               y="10" 
@@ -137,7 +138,7 @@ export default class MainScreen extends React.Component {
               stroke="#FD7923" 
               strokeWidth="50" 
               d={arc4} 
-              onPress={() => navigate('Entretien', {})}
+              onPress={() => navigate('Detente', {})}
             />
           <G x="40" y="40"> 
             <Circle
@@ -151,7 +152,7 @@ export default class MainScreen extends React.Component {
                 fontWeight="bold"
                 fontSize="24"
                 fill="#20BBD8" 
-                onPress={() => navigate('Entretien', {})}
+                onPress={() => navigate('Detente', {})}
             >Détente</Text>  
           </G>
         </G>
