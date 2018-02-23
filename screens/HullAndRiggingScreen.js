@@ -95,13 +95,13 @@ export default class HullAndRiggingScreen extends React.Component {
           />
           <Circle
             cx="80"
-            cy="320"
+            cy="315"
             r="10"
             fill={this.state.InspectRudderColour}
             onPress={this.toggleInspectRudder}
           />
           { this.state.showInspectRudder &&
-            <G x="80" y="290" onPress={() => navigate('InspectRudder', {})}>
+            <G x="10" y="325" onPress={() => navigate('InspectRudder', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -112,19 +112,19 @@ export default class HullAndRiggingScreen extends React.Component {
                   fontWeight="bold"
                   fontSize="16"
                   fill="blue"
-              >Inspection du gouvernail</Text>
+              >Inspection du Gouvernail</Text>
             </G>
           }
 
           <Circle
             cx="130"
-            cy="360"
+            cy="355"
             r="10"
             fill={this.state.InspectHullColour}
             onPress={this.toggleInspectHull}
           />
           { this.state.showInspectHull &&
-            <G x="130" y="330" onPress={() => navigate('InspectHull', {})}>
+            <G x="70" y="365" onPress={() => navigate('InspectHull', {})}>
               <Rect
                 width="170"
                 height="20"
@@ -140,14 +140,14 @@ export default class HullAndRiggingScreen extends React.Component {
           }
 
           <Circle
-            cx="170"
-            cy="400"
+            cx="185"
+            cy="405"
             r="10"
             fill={this.state.InspectKeelColour}
             onPress={this.toggleInspectKeel}
           />
           { this.state.showInspectKeel &&
-            <G x="170" y="370" onPress={() => navigate('InspectKeel', {})}>
+            <G x="90" y="415" onPress={() => navigate('InspectKeel', {})}>
               <Rect
                 width="170"
                 height="20"
