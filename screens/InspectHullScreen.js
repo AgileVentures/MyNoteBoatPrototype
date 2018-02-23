@@ -88,14 +88,21 @@ export default class InspectHullScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-         <Text>Inspection visuelle de la coque.</Text>
-         <Text>Rechercher toute déformation.</Text>
-         <Text>Inspecter l’usure des anodes.</Text>
-         <Text>Inspecter les passe-coque</Text>
-         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
-         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
-         <Form
+      <Text style={styles.heading}>Inspection de la Coque</Text>
+         <Text style={styles.itemText}>Inspection visuelle de la coque.</Text>
+         <Text style={styles.itemText}>Rechercher toute déformation.</Text>
+         <Text style={styles.itemText}>Inspecter l’usure des anodes.</Text>
+         <Text style={styles.itemText}>Inspecter les passe-coque</Text>
+         <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           </View>
+        <Form
           ref="form"
           type={InspectHull}
           value={this.state.value}
@@ -144,5 +151,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  lineItem: {
+    flexGrow: 1, 
+    // justifyContent: 'center', 
+    // alignItems: 'center', 
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  itemKeys: {
+    fontWeight: "bold",
+    fontSize: 15
+  },
+  itemText: {
+    fontSize: 15
+  }, 
+  heading: {
+    fontSize: 20,
+    alignSelf: 'center',
+    marginBottom: 10
   }
 });

@@ -88,11 +88,18 @@ export default class TestNavLightsScreen extends React.Component {
                 </TouchableOpacity>}
         />
         <ScrollView style={styles.container}>
-           <Text>Contrôler tous les feux de navigation.</Text>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text>Avant chaque sortie</Text>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
-           <Form
+        <Text style={styles.heading}>Tester les feux de navigation</Text>
+           <Text style={styles.itemText}>Contrôler tous les feux de navigation.</Text>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           </View>
+          <Form
             ref="form"
             type={TestNavLights}
             value={this.state.value}
@@ -141,5 +148,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  lineItem: {
+    flexGrow: 1, 
+    // justifyContent: 'center', 
+    // alignItems: 'center', 
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  itemKeys: {
+    fontWeight: "bold",
+    fontSize: 15
+  },
+  itemText: {
+    fontSize: 15
+  }, 
+  heading: {
+    fontSize: 20,
+    alignSelf: 'center',
+    marginBottom: 10
   }
 });

@@ -95,14 +95,21 @@ export default class RudderCommandTestScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-        <Text>Inspection visuelle de l’ensemble. </Text>
-        <Text>S’assurer qu’il n’y a pas de jeu excessif entre les pièces mobiles.</Text>
-        <Text>S’assurer qu’il n’y a pas de fuite si la commande est hydraulique. </Text>
-        <Text>Essaye la barre sur les deux bords, s’assurer que le transmission est douce</Text>
-        <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text>Avant chaque sortie</Text>
-         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
-         <Form
+      <Text style={styles.heading}>Essai de la commande de barre</Text>
+        <Text style={styles.itemText}>Inspection visuelle de l’ensemble. </Text>
+        <Text style={styles.itemText}>S’assurer qu’il n’y a pas de jeu excessif entre les pièces mobiles.</Text>
+        <Text style={styles.itemText}>S’assurer qu’il n’y a pas de fuite si la commande est hydraulique. </Text>
+        <Text style={styles.itemText}>Essaye la barre sur les deux bords, s’assurer que le transmission est douce</Text>
+        <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           </View>
+        <Form
           ref="form"
           type={RudderCommandTest}
           value={this.state.value}
@@ -151,5 +158,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  lineItem: {
+    flexGrow: 1, 
+    // justifyContent: 'center', 
+    // alignItems: 'center', 
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  itemKeys: {
+    fontWeight: "bold",
+    fontSize: 15
+  },
+  itemText: {
+    fontSize: 15
+  }, 
+  heading: {
+    fontSize: 20,
+    alignSelf: 'center',
+    marginBottom: 10
   }
 });
