@@ -87,13 +87,13 @@ export default class SecurityScreen extends React.Component {
           />
           <Circle
             cx="80"
-            cy="320"
+            cy="328"
             r="10"
             fill={this.state.LifeRingControlColour}
             onPress={this.toggleLifeRingControl}
           />
           { this.state.showLifeRingControl &&
-            <G x="80" y="290" onPress={() => navigate('LifeRingControl', {})}>
+            <G x="20" y="340" onPress={() => navigate('LifeRingControl', {})}>
               <Rect
                 width="185"
                 height="20"

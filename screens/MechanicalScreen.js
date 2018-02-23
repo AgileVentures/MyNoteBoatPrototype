@@ -136,7 +136,7 @@ export default class MechanicalScreen extends React.Component {
             onPress={this.toggleRudderCommandTest}
           />
           { this.state.showRudderCommandTest &&
-            <G x="140" y="250" onPress={() => navigate('RudderCommandTest', {})}>
+            <G x="20" y="250" onPress={() => navigate('RudderCommandTest', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -170,19 +170,19 @@ export default class MechanicalScreen extends React.Component {
                fontWeight="bold"
                fontSize="16"
                fill="blue"
-              >"Essai de l'embrayage"</Text>
+              >Essai de l'embrayage</Text>
             </G>
           }
 
           <Circle
             cx="80"
-            cy="320"
+            cy="335"
             r="10"
             fill={this.state.EngineTestColour}
             onPress={this.toggleEngineTest}
           />
           { this.state.showEngineTest &&
-            <G x="80" y="290" onPress={() => navigate('EngineTest', {})}>
+            <G x="50" y="345" onPress={() => navigate('EngineTest', {})}>
               <Rect
                 width="185"
                 height="20"

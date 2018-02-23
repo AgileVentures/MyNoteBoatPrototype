@@ -112,7 +112,7 @@ export default class ElectricalScreen extends React.Component {
             onPress={this.toggleTestNavLights}
           />
           { this.state.showTestNavLights &&
-            <G x="260" y="320" onPress={() => navigate('TestNavLights', {})}>
+            <G x="230" y="320" onPress={() => navigate('TestNavLights', {})}>
               <Rect
                 width="120"
                 height="40"
