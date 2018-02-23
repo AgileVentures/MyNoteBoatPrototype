@@ -5,7 +5,6 @@ import NavigationBar from 'react-native-navbar';
 
 export default class DetenteScreen extends React.Component {
 
-
     static navigationOptions = {
         title: 'Détente',
       };
@@ -18,30 +17,46 @@ export default class DetenteScreen extends React.Component {
     }
 
 
-  render() {
-    if (this.state.isLoading) {
-      return <View><NativeText>Loading...</NativeText></View>;
+    componentDidMount() {
+        this.setState({
+            isLoading: false,
+        });
     }
-    const { navigate } = this.props.navigation;
-    return (
-      <View style={styles.container}>
-      <NavigationBar
-        tintColor="#1C87B2"
-        title={<NativeImage 
-                 source={require('../assets/images/mynoteboat.png')}
-                />
-              }
-        leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
-                <NativeImage 
-                 source={require('../assets/images/splash-64.png')}
-                />
-              </TouchableOpacity>}
-      />
-       
 
-      </View>
-    );
-  }
+    render() {
+        if (this.state.isLoading) {
+        return <View><NativeText>Loading...</NativeText></View>;
+        }
+        const { navigate } = this.props.navigation;
+        return (
+            <View style={styles.container}>
+            <NavigationBar
+                tintColor="#1C87B2"
+                title={<NativeImage 
+                        source={require('../assets/images/mynoteboat.png')}
+                        />
+                    }
+                leftButton={<TouchableOpacity onPress={() => navigate('Main', {})}>
+                        <NativeImage 
+                        source={require('../assets/images/splash-64.png')}
+                        />
+                    </TouchableOpacity>}
+            />
+            
+            <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                <ResponsiveImage 
+                    source={{uri: 'http://julien.grimonet.fr/images/en_construction.png'}} 
+                    initWidth="360" initHeight="129"/>
+            </View> 
+            <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                <ResponsiveImage 
+                    source={{uri: 'https://i.giphy.com/mJeTA5HPI3bdC.gif'}} 
+                    initWidth="360" initHeight="180"/>
+            </View> 
+
+        </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
