@@ -4,6 +4,8 @@ import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import NavigationTabNav from './NavigationTabNav';
+import AssistanceScreen from './../screens/AssistanceScreen';
+import DetenteScreen from './../screens/DetenteScreen';
 import MainScreen from './../screens/MainScreen';
 import WindlassTestScreen from './../screens/WindlassTestScreen';
 import RudderCommandTestScreen from './../screens/RudderCommandTestScreen';
@@ -35,6 +37,12 @@ const RootStackNavigator = StackNavigator(
     },
     Navigation: {
       screen: NavigationTabNav, navigationOptions: { header: null }
+    },
+    Assistance: {
+      screen: AssistanceScreen, navigationOptions: { header: null }
+    },
+    Detente: {
+      screen: DetenteScreen, navigationOptions: { header: null }
     },
     WindlassTest: {
       screen: WindlassTestScreen, navigationOptions: { header: null }
