@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image as NativeImage, Text as NativeText, TouchableOpacity, StyleSheet, View } from 'react-native';
-
-import { Font } from 'expo';
-
+import ResponsiveImage from 'react-native-responsive-image';
 import NavigationBar from 'react-native-navbar';
 
 export default class AssistanceScreen extends React.Component {
@@ -18,6 +16,11 @@ export default class AssistanceScreen extends React.Component {
         };
     }
 
+  componentDidMount() {
+    this.setState({
+        isLoading: false,
+    });
+  }
 
   render() {
     if (this.state.isLoading) {
@@ -39,6 +42,17 @@ export default class AssistanceScreen extends React.Component {
               </TouchableOpacity>}
       />
        
+      <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+          <ResponsiveImage 
+            source={{uri: 'http://julien.grimonet.fr/images/en_construction.png'}} 
+            initWidth="360" initHeight="129"/>
+      </View> 
+      <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+          <ResponsiveImage 
+            source={{uri: 'https://i.giphy.com/media/4ROqHzXxBIIGk/giphy.webp'}} 
+            initWidth="360" initHeight="201"/>
+      </View> 
+
 
       </View>
     );

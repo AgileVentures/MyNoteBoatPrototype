@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image as NativeImage, Text as NativeText, TouchableOpacity, StyleSheet, View } from 'react-native';
-
-import { Font } from 'expo';
-
+import ResponsiveImage from 'react-native-responsive-image';
 import NavigationBar from 'react-native-navbar';
 
 export default class DetenteScreen extends React.Component {
