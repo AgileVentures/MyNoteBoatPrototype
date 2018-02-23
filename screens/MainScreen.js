@@ -169,16 +169,14 @@ export default class MainScreen extends React.Component {
          </G>
 
           <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
-          <Svg viewBox="-1 -1 2 2" style={piestyles.container}>
           <Path
               x="113"
-              y="140" 
+              y="140"
               fill="#A8C4DA" 
               stroke="#A8C4DA" 
-              strokeWidth="50" 
-              d={getPie({ percent: 0.45, color: '#A8C4DA' })} 
+              strokeWidth="1" 
+              d="M 0 200 A 100 100 0 0 0 45.39904997395469 10.899347581163227 L 0 100" 
             />
-            </Svg>
             <Text
               x="113"
               y="140"
@@ -221,13 +219,13 @@ const styles = StyleSheet.create({
 
 const piestyles = StyleSheet.create({
   container: {
-    transform: [{ rotateX: '90deg' }],
+    transform: [{ rotate: '90deg' }],
   },
 }); 
 
-function getCoordinatesForPercent(percent) {
-  const x = Math.cos(2 * Math.PI * percent);
-  const y = Math.sin(2 * Math.PI * percent);
+function getCoordinatesForPercent(percent, radius, cx, cy) {
+  const x = cx + radius * Math.sin(Math.PI * percent);
+  const y = cy + radius * Math.cos(Math.PI * percent);
   return [x, y];
 }
 
