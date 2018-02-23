@@ -157,50 +157,52 @@ export default class MainScreen extends React.Component {
           </G>
         </G>
 
-         <G x="25" y="33" onPress={() => navigate('Checklists', {})}>
+         <G x="-40" y="80" onPress={() => navigate('Entretien', {})}>
          <Path
               x="0"
               y="0" 
               fill="#A8C4DA" 
               stroke="#A8C4DA" 
-              strokeWidth="50" 
-              d={arc6} 
+              strokeWidth="1" 
+              d="M 200 200 A 100 100 0 0 1 154.601 10.899347581163227 L 200 100"
             />
+            <Text
+              x="150"
+              y="115"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >BOAT</Text>
+
          </G>
 
-          <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
+          <G x="165" y="80" onPress={() => navigate('Checklists', {})}>
           <Path
-              x="113"
-              y="140"
+              x="0"
+              y="0"
               fill="#A8C4DA" 
               stroke="#A8C4DA" 
               strokeWidth="1" 
               d="M 0 200 A 100 100 0 0 0 45.39904997395469 10.899347581163227 L 0 100" 
             />
             <Text
-              x="113"
-              y="140"
-              textAnchor="middle"
-              fontWeight="bold"
-              fontSize="16"
-              fill="#20BBD8"
-            >BOAT</Text>
-            <Text
-              x="206"
-              y="130"
+              x="50"
+              y="100"
               textAnchor="middle"
               fontWeight="bold"
               fontSize="16"
               fill="#20BBD8"
             >CHECK</Text>
             <Text
-              x="205"
-              y="150"
+              x="50"
+              y="130"
               textAnchor="middle"
               fontWeight="bold"
               fontSize="16"
               fill="#20BBD8"
             >LISTS</Text>
+
          </G>
         </G>
 
