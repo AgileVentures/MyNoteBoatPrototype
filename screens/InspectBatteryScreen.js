@@ -88,13 +88,20 @@ export default class InspectBatteryScreen extends React.Component {
                 </TouchableOpacity>}
         />
         <ScrollView style={styles.container}>
-           <Text>Inspection visuelle des batteries.</Text>
-           <Text>Rechercher des déformation sur l’enveloppe.</Text>
-           <Text>Rechercher des coulures sur les extérieurs.</Text>
-           <Text>Contrôler les niveaux et la densité le cas échéant.</Text>
-           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
-           <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
+          <Text style={styles.heading}>Inspection de la batterie</Text>
+           <Text style={styles.itemText}>Inspection visuelle des batteries.</Text>
+           <Text style={styles.itemText}>Rechercher des déformation sur l’enveloppe.</Text>
+           <Text style={styles.itemText}>Rechercher des coulures sur les extérieurs.</Text>
+           <Text style={styles.itemText}>Contrôler les niveaux et la densité le cas échéant.</Text>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           </View>
            <Form
             ref="form"
             type={InspectBattery}
@@ -123,7 +130,7 @@ export default class InspectBatteryScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff'
   },
   title: {
     fontSize: 30,
@@ -144,5 +151,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  lineItem: {
+    flexGrow: 1, 
+    // justifyContent: 'center', 
+    // alignItems: 'center', 
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  itemKeys: {
+    fontWeight: "bold",
+    fontSize: 15
+  },
+  itemText: {
+    fontSize: 15
+  }, 
+  heading: {
+    fontSize: 20,
+    alignSelf: 'center',
+    marginBottom: 10
   }
 });

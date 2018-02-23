@@ -88,14 +88,21 @@ export default class LifeRingControlScreen extends React.Component {
                 </TouchableOpacity>}
         />
       <ScrollView style={styles.container}>
-         <Text>Inspection visuelle de la bouée couronne.</Text>
-         <Text>Essai du feu à retournement.</Text>
-         <Text>Contrôle du marquage (Nom et port du bateau)</Text>
-         <Text>Contrôle des bandes réfléchissantes</Text>
-         <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text> 23 mai 2017</Text>
-         <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text> 1 / an avant la mise à l’eau</Text>
-         <Text style={{fontWeight: "bold"}}>Today:</Text><Text> {new Date().toLocaleDateString('fr-FR')}</Text>
-         <Form
+      <Text style={styles.heading}>Inspection de la batterie</Text>
+         <Text style={styles.itemText}>Inspection visuelle de la bouée couronne.</Text>
+         <Text style={styles.itemText}>Essai du feu à retournement.</Text>
+         <Text style={styles.itemText}>Contrôle du marquage (Nom et port du bateau)</Text>
+         <Text style={styles.itemText}>Contrôle des bandes réfléchissantes</Text>
+         <View style={styles.lineItem}>
+           <Text style={{fontWeight: "bold"}}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={{fontWeight: "bold"}}>Fréquence:</Text><Text style={styles.itemText}> 1 / an avant la mise à l’eau</Text>
+           </View>
+           <View style={styles.lineItem}>
+           <Text style={{fontWeight: "bold"}}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
+           </View>
+        <Form
           ref="form"
           type={LifeRingControl}
           value={this.state.value}
@@ -144,5 +151,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  lineItem: {
+    flexGrow: 1, 
+    // justifyContent: 'center', 
+    // alignItems: 'center', 
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+
+  },
+  itemKeys: {
+    fontWeight: "bold",
+    fontSize: 15
+  },
+  itemText: {
+    fontSize: 15
+  }, 
+  heading: {
+    fontSize: 20,
+    alignSelf: 'center',
+    marginBottom: 10
   }
 });
