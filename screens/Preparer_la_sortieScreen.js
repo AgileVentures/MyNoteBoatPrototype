@@ -82,7 +82,7 @@ export default class Preparer_la_sortieScreen extends Component {
                 </View>
                     ]}
                     <View style={styles.line}/>
-                    <Text style={styles.heading}>au port</Text>
+                    <Text style={styles.heading}>Au port</Text>
                     <View style={styles.line}/>
                     {[
                     <View key={0} style={styles.item}>
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
+        marginLeft: 10
     },
     line: {
         flex: 1,
@@ -129,7 +130,8 @@ const styles = StyleSheet.create({
     heading: {
         fontWeight: "bold",
         textShadowRadius: 25,
-        textShadowColor: "navy"
+        textShadowColor: "navy",
+        marginLeft: 10
 
     }
 })

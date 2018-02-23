@@ -36,7 +36,7 @@ export default class Mettre_a_leauScreen extends Component {
                 />
                 <ScrollView>
                     <View style={styles.line}/>
-                    <Text style={styles.heading}>avant de reculer</Text>
+                    <Text style={styles.heading}>Avant de reculer</Text>
                     <View style={styles.line}/>
 
                     {[
@@ -82,7 +82,7 @@ export default class Mettre_a_leauScreen extends Component {
                 </View>
                     ]}
                     <View style={styles.line}/>
-                    <Text style={styles.heading}>la remorque touche l’eau</Text>
+                    <Text style={styles.heading}>La remorque touche l’eau</Text>
                     <View style={styles.line}/>
                     {[
                     <View key={0} style={styles.item}>
@@ -120,16 +120,18 @@ const styles = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
+        marginLeft: 10
     },
     line: {
         flex: 1,
         height: 0.9,
-        backgroundColor: 'navy',
+        backgroundColor: 'navy'
     },
     heading: {
         fontWeight: "bold",
         textShadowRadius: 25,
-        textShadowColor: "navy"
+        textShadowColor: "navy",
+        marginLeft: 10
 
     }
 })

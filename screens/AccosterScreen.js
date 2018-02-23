@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
+        marginLeft: 10
     },
     line: {
         flex: 1,
@@ -129,7 +130,8 @@ const styles = StyleSheet.create({
     heading: {
         fontWeight: "bold",
         textShadowRadius: 25,
-        textShadowColor: "navy"
+        textShadowColor: "navy",
+        marginLeft: 10
 
     }
 })
