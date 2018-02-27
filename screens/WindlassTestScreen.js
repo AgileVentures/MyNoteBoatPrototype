@@ -81,7 +81,7 @@ export default class WindlassTestScreen extends React.Component {
     }
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View style={{flex: 1}}>
         <NavigationBar
           tintColor="#1C87B2"
           title={<Image 
@@ -117,7 +117,7 @@ export default class WindlassTestScreen extends React.Component {
           options={options}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
       </ScrollView>
     </View>

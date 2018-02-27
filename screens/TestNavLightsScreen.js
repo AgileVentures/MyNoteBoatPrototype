@@ -94,7 +94,7 @@ export default class TestNavLightsScreen extends React.Component {
            <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> Avant chaque sortie</Text>
            </View>
            <View style={styles.lineItem}>
            <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>

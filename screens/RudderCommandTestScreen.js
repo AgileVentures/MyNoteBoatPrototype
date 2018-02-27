@@ -81,7 +81,7 @@ export default class RudderCommandTestScreen extends React.Component {
     }
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View style={{flex: 1}}>
         <NavigationBar
           tintColor="#1C87B2"
           title={<Image 
@@ -104,7 +104,7 @@ export default class RudderCommandTestScreen extends React.Component {
            <Text style={styles.itemKeys}>Last Control:</Text><Text style={styles.itemText}> 23 mai 2017</Text>
            </View>
            <View style={styles.lineItem}>
-           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}>Avant chaque sortie</Text>
+           <Text style={styles.itemKeys}>Fréquence:</Text><Text style={styles.itemText}> Avant chaque sortie</Text>
            </View>
            <View style={styles.lineItem}>
            <Text style={styles.itemKeys}>Today:</Text><Text style={styles.itemText}> {new Date().toLocaleDateString('fr-FR')}</Text>
@@ -117,7 +117,7 @@ export default class RudderCommandTestScreen extends React.Component {
           options={options}
         />
         <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Save</Text>
+          <Text style={styles.buttonText}>Valider</Text>
         </TouchableHighlight>
       </ScrollView>
     </View>  

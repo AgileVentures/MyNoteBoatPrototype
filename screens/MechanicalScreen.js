@@ -94,26 +94,26 @@ export default class MechanicalScreen extends React.Component {
               </TouchableOpacity>}
       />
         <Svg
-            height="972"
-            width="578"
+            height="800"
+            width="480"
         >
           <Image
-            x="50"
+            x="35"
             y="5"
-            height="400"
+            height="350"
             width="244"
-            preserveAspectRatio="xMidYMid slice"
+            preserveAspectRatio="xMidYMid"
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
-            cx="190"
-            cy="330"
+            cx="170"
+            cy="290"
             r="10"
             fill={this.state.WindlassTestColour}
             onPress={this.toggleWindlassTest}
           />
           { this.state.showWindlassTest &&
-            <G x="190" y="300" onPress={() => navigate('WindlassTest', {})}>
+            <G x="170" y="260" onPress={() => navigate('WindlassTest', {})}>
               <Rect
                 width="80"
                 height="20"
@@ -129,14 +129,14 @@ export default class MechanicalScreen extends React.Component {
           }
 
           <Circle
-            cx="140"
-            cy="280"
+            cx="125"
+            cy="245"
             r="10"
             fill={this.state.RudderCommandTestColour}
             onPress={this.toggleRudderCommandTest}
           />
           { this.state.showRudderCommandTest &&
-            <G x="20" y="250" onPress={() => navigate('RudderCommandTest', {})}>
+            <G x="20" y="215" onPress={() => navigate('RudderCommandTest', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -152,14 +152,14 @@ export default class MechanicalScreen extends React.Component {
           }
 
           <Circle
-            cx="100"
-            cy="240"
+            cx="90"
+            cy="200"
             r="10"
             fill={this.state.ClutchTestColour}
             onPress={this.toggleClutchTest}
           />
           { this.state.showClutchTest &&
-            <G x="100" y="210" onPress={() => navigate('ClutchTest', {})}>
+            <G x="90" y="170" onPress={() => navigate('ClutchTest', {})}>
               <Rect
                 width="140"
                 height="20"
@@ -176,13 +176,13 @@ export default class MechanicalScreen extends React.Component {
 
           <Circle
             cx="80"
-            cy="335"
+            cy="290"
             r="10"
             fill={this.state.EngineTestColour}
             onPress={this.toggleEngineTest}
           />
           { this.state.showEngineTest &&
-            <G x="50" y="345" onPress={() => navigate('EngineTest', {})}>
+            <G x="50" y="300" onPress={() => navigate('EngineTest', {})}>
               <Rect
                 width="185"
                 height="20"

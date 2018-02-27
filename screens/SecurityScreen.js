@@ -74,26 +74,26 @@ export default class SecurityScreen extends React.Component {
               </TouchableOpacity>}
       />
         <Svg
-            height="972"
-            width="578"
+            height="800"
+            width="480"
         >
           <Image
-            x="50"
+            x="35"
             y="5"
-            height="400"
+            height="350"
             width="244"
-            preserveAspectRatio="xMidYMid slice"
+            preserveAspectRatio="xMidYMid"
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
             cx="80"
-            cy="328"
+            cy="290"
             r="10"
             fill={this.state.LifeRingControlColour}
             onPress={this.toggleLifeRingControl}
           />
           { this.state.showLifeRingControl &&
-            <G x="20" y="340" onPress={() => navigate('LifeRingControl', {})}>
+            <G x="20" y="300" onPress={() => navigate('LifeRingControl', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -109,14 +109,14 @@ export default class SecurityScreen extends React.Component {
           }
 
           <Circle
-            cx="100"
-            cy="240"
+            cx="90"
+            cy="220"
             r="10"
             fill={this.state.LifeRaftControlColour}
             onPress={this.toggleLifeRaftControl}
           />
           { this.state.showLifeRaftControl &&
-            <G x="100" y="210" onPress={() => navigate('LifeRaftControl', {})}>
+            <G x="100" y="190" onPress={() => navigate('LifeRaftControl', {})}>
               <Rect
                 width="185"
                 height="20"
