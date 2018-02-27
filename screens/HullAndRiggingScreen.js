@@ -82,26 +82,26 @@ export default class HullAndRiggingScreen extends React.Component {
               </TouchableOpacity>}
       />
         <Svg
-            height="972"
-            width="578"
+            height="800"
+            width="480"
         >
           <Image
-            x="50"
+            x="35"
             y="5"
-            height="400"
+            height="350"
             width="244"
-            preserveAspectRatio="xMidYMid slice"
+            preserveAspectRatio="xMidYMid"
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
-            cx="80"
-            cy="315"
+            cx="75"
+            cy="275"
             r="10"
             fill={this.state.InspectRudderColour}
             onPress={this.toggleInspectRudder}
           />
           { this.state.showInspectRudder &&
-            <G x="10" y="325" onPress={() => navigate('InspectRudder', {})}>
+            <G x="10" y="245" onPress={() => navigate('InspectRudder', {})}>
               <Rect
                 width="185"
                 height="20"
@@ -118,13 +118,13 @@ export default class HullAndRiggingScreen extends React.Component {
 
           <Circle
             cx="130"
-            cy="355"
+            cy="320"
             r="10"
             fill={this.state.InspectHullColour}
             onPress={this.toggleInspectHull}
           />
           { this.state.showInspectHull &&
-            <G x="70" y="365" onPress={() => navigate('InspectHull', {})}>
+            <G x="115" y="290" onPress={() => navigate('InspectHull', {})}>
               <Rect
                 width="170"
                 height="20"
@@ -140,14 +140,14 @@ export default class HullAndRiggingScreen extends React.Component {
           }
 
           <Circle
-            cx="185"
-            cy="405"
+            cx="160"
+            cy="335"
             r="10"
             fill={this.state.InspectKeelColour}
             onPress={this.toggleInspectKeel}
           />
           { this.state.showInspectKeel &&
-            <G x="90" y="415" onPress={() => navigate('InspectKeel', {})}>
+            <G x="65" y="345" onPress={() => navigate('InspectKeel', {})}>
               <Rect
                 width="170"
                 height="20"

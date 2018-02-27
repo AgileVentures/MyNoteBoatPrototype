@@ -70,26 +70,26 @@ export default class ElectricalScreen extends React.Component {
               </TouchableOpacity>}
       />
         <Svg
-            height="972"
-            width="578"
+            height="800"
+            width="480"
         >
           <Image
-            x="50"
+            x="35"
             y="5"
-            height="400"
+            height="350"
             width="244"
-            preserveAspectRatio="xMidYMid slice"
+            preserveAspectRatio="xMidYMid"
             href={require('../assets/images/mynoteboat-sailboat.png')}
           />
           <Circle
-            cx="150"
-            cy="300"
+            cx="120"
+            cy="255"
             r="10"
             fill={this.state.InspectBatteryColour}
             onPress={this.toggleInspectBattery}
           />
           { this.state.showInspectBattery &&
-            <G x="150" y="270" onPress={() => navigate('InspectBattery', {})}>
+            <G x="110" y="225" onPress={() => navigate('InspectBattery', {})}>
               <Rect
                 width="180"
                 height="20"
@@ -105,14 +105,14 @@ export default class ElectricalScreen extends React.Component {
           }
 
           <Circle
-            cx="290"
-            cy="370"
+            cx="245"
+            cy="320"
             r="10"
             fill={this.state.TestNavLightsColour}
             onPress={this.toggleTestNavLights}
           />
           { this.state.showTestNavLights &&
-            <G x="230" y="320" onPress={() => navigate('TestNavLights', {})}>
+            <G x="205" y="270" onPress={() => navigate('TestNavLights', {})}>
               <Rect
                 width="120"
                 height="40"

@@ -74,7 +74,7 @@ export default class InspectBatteryScreen extends React.Component {
     }
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View style={{flex: 1}}>
         <NavigationBar
           tintColor="#1C87B2"
           title={<Image
