@@ -48,11 +48,11 @@ export default class MainScreen extends React.Component {
                  source={require('../assets/images/splash-64.png')}
                 />}
       />
-      <Svg width="500" height="900">
-        <G x="10" y="50">
+      <Svg width="480" height="800">
+        <G x="-2" y="20">
         <G x="0" y="0" onPress={() => navigate('Navigation', {})}>
-          <G x="295"
-             y="50">
+          <G x="285"
+             y="60">
             <Circle
               cx="0"
               cy="0"
@@ -67,8 +67,8 @@ export default class MainScreen extends React.Component {
             >Navigation</Text> 
           </G> 
           <Path
-              x="30"
-              y="10" 
+              x="20"
+              y="20" 
               fill="none" 
               stroke="#FD7923" 
               strokeWidth="50" 
@@ -78,15 +78,15 @@ export default class MainScreen extends React.Component {
 
         <G x="0" y="0" onPress={() => navigate('Assistance', {})}>
           <Path 
-            x="30"
-            y="50"        
+            x="20"
+            y="40"        
             fill="none" 
             stroke="#FD7923" 
             strokeWidth="50" 
             d={arc2} 
             onPress={() => navigate('Assistance', {})}
           />
-          <G x="270" y="300">
+          <G x="260" y="290">
             <Circle
               cx="20"
               cy="20"
@@ -106,15 +106,15 @@ export default class MainScreen extends React.Component {
         <G x="0" y="0" onPress={() => navigate('Entretien', {})}>
           <Path 
               x="0"
-              y="50"
+              y="40"
               fill="none" 
               stroke="#FD7923" 
               strokeWidth="50" 
               d={arc3} 
             />
             
-          <G x="50"
-             y="300">
+          <G x="55"
+             y="285">
             <Circle
                 cx="-15"
                 cy="15"
@@ -133,14 +133,14 @@ export default class MainScreen extends React.Component {
         <G x="0" y="0" onPress={() => navigate('Detente', {})}>
           <Path
               x="0"
-              y="10" 
+              y="20" 
               fill="none" 
               stroke="#FD7923" 
               strokeWidth="50" 
               d={arc4} 
               onPress={() => navigate('Detente', {})}
             />
-          <G x="40" y="40"> 
+          <G x="40" y="50"> 
             <Circle
               cx="0"
               cy="0"
@@ -157,7 +157,7 @@ export default class MainScreen extends React.Component {
           </G>
         </G>
 
-         <G x="25" y="33" onPress={() => navigate('Checklists', {})}>
+         <G x="15" y="30" onPress={() => navigate('Checklists', {})}>
          <Path
               x="0"
               y="0" 
@@ -166,9 +166,25 @@ export default class MainScreen extends React.Component {
               strokeWidth="50" 
               d={arc6} 
             />
+            <Text
+              x="186"
+              y="130"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >CHECK</Text>
+            <Text
+              x="185"
+              y="150"
+              textAnchor="middle"
+              fontWeight="bold"
+              fontSize="16"
+              fill="#20BBD8"
+            >LISTS</Text>
          </G>
 
-          <G x="5" y="33" onPress={() => navigate('Entretien', {})}>
+          <G x="5" y="30" onPress={() => navigate('Entretien', {})}>
           <Path
               x="0"
               y="0" 
@@ -185,22 +201,7 @@ export default class MainScreen extends React.Component {
               fontSize="16"
               fill="#20BBD8"
             >BOAT</Text>
-            <Text
-              x="206"
-              y="130"
-              textAnchor="middle"
-              fontWeight="bold"
-              fontSize="16"
-              fill="#20BBD8"
-            >CHECK</Text>
-            <Text
-              x="205"
-              y="150"
-              textAnchor="middle"
-              fontWeight="bold"
-              fontSize="16"
-              fill="#20BBD8"
-            >LISTS</Text>
+   
          </G>
         </G>
 
