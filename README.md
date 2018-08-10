@@ -5,13 +5,13 @@ We ran a full week design sprint for the MyNoteBoat folks, running usability stu
 
 Some screenshots of the prototype
 
-![home page](https://dl.dropbox.com/s/getsjqx1jvo6ouq/Screenshot%202018-02-28%2016.56.31.png?dl=0)
+<img src="https://dl.dropbox.com/s/getsjqx1jvo6ouq/Screenshot%202018-02-28%2016.56.31.png?dl=0" align="left" height="512px" alt="home page" >
 
-![boat readiness screen](https://dl.dropbox.com/s/s3g0rtpv2podt4e/Screenshot%202018-02-28%2016.56.51.png?dl=0)
+<img src="https://dl.dropbox.com/s/s3g0rtpv2podt4e/Screenshot%202018-02-28%2016.56.51.png?dl=0" align="left" height="512px" alt="boat readiness screen" >
 
-![status adjuster](https://dl.dropbox.com/s/2b8zfpb20ui77jp/Screenshot%202018-02-28%2016.57.21.png?dl=0)
+<img src="https://dl.dropbox.com/s/2b8zfpb20ui77jp/Screenshot%202018-02-28%2016.57.21.png?dl=0" align="left" height="512px" alt="status adjuster" >
 
-![Checklists](https://dl.dropbox.com/s/ctnv82fgj8ijcbn/Screenshot%202018-02-28%2016.57.40.png?dl=0)
+<img src="https://dl.dropbox.com/s/ctnv82fgj8ijcbn/Screenshot%202018-02-28%2016.57.40.png?dl=0" align="left" height="512px" alt="Checklists" >
 
 The feedback from the client and the French sailors was very positive and we look forward to developing the production version of the system.
 
